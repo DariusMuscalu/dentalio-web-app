@@ -1,0 +1,7 @@
+<app-header></app-header>
+<div *ngIf="isVisible$ | async">
+  <div class="auth-overlay-shadow">
+    <app-sign-in></app-sign-in>
+  </div>
+</div>
+<img src="/assets/home/home-bg-image.png" alt="dentist image">

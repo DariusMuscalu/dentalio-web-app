@@ -1,0 +1,108 @@
+:host {
+    display: block;
+}
+
+:host > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+}
+
+.container {
+    background-color: #F7F7F7;
+    width: 30%;
+    border-radius: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-modal-btn {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.close-icon {
+    filter: invert(67%) sepia(11%) saturate(6%) hue-rotate(335deg) brightness(89%) contrast(91%);
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.logo {
+    color: #6883BA;
+    font-weight: bold;
+    letter-spacing: .2rem;
+}
+
+.hint {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+// === AUTH OPTION BUTTON ===
+
+.auth-option-btn {
+    margin: 0.7rem 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d9d9d9; 
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    cursor: pointer;
+}
+
+.auth-option-btn:hover {
+    background-color: #F7F7F7;
+}
+
+.auth-option-icon {
+    margin: 0rem .5rem;
+}
+
+.auth-option-text {
+    font-size: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align: center;
+}
+
+// === DIVIDER ===
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.line-divider {
+    flex-grow: 1;
+    background-color: #d9d9d9;
+    padding: 0.05rem 1rem;
+    margin: 0 10px; 
+}
+
+.text-divider {
+    color: #d9d9d9;
+    white-space: nowrap;
+}
+
+// === REGISTER / SIGN IN BUTTON ===
+
+.create-account-btn {
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.register-hint {
+    color: #1A2D50;
+    font-weight: bold;
+}

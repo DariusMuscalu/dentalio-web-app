@@ -1,0 +1,33 @@
+header {
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #6883ba;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  margin-left: 10vw;
+}
+
+.right-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10vw;
+}
+
+.account-btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.appointments-btn {
+  cursor: pointer;
+}
