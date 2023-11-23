@@ -7,9 +7,10 @@ import { ProfilePageComponent } from './profile/profile-page/profile-page.compon
 import { EditProfilePageComponent } from './profile/edit-profile-page/edit-profile-page.component';
 import { AuthModule } from './auth/auth.module';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfilePageComponent, EditProfilePageComponent, HeaderComponent],
+  declarations: [AppComponent, ProfilePageComponent, EditProfilePageComponent, HeaderComponent, FooterComponent],
   imports: [BrowserModule, AppRoutingModule, AuthModule],
   providers: [],
   bootstrap: [AppComponent],

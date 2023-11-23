@@ -10,5 +10,23 @@ html {
   background-color: #d9d9d9;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
-  overflow: hidden;
+}
+
+button {
+  border: none;
+  background-color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333333;
+}
+
+a {
+  text-decoration: none; 
+  color: inherit;
+  cursor: pointer; 
+}
+
+a:visited {
+  color: inherit; 
 }
