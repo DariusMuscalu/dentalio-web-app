@@ -1,0 +1,27 @@
+nav {
+  position: absolute;
+  right: 0.1rem;
+  background-color: #fff;
+  max-width: 600px;
+  border-radius: 1rem;
+  float: right;
+  margin-right: 15%;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 2px solid #d9d9d9;
+  font-weight: bold;
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
+}
+
+.nav-btn-without-border {
+  padding: 1rem;
+}

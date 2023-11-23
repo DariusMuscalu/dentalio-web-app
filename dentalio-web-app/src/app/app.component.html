@@ -4,7 +4,15 @@
     <app-sign-in></app-sign-in>
   </div>
 </div>
+
+<div *ngIf="isNavMenuVisible$ | async">
+  <app-navigation></app-navigation>
+</div>
+
 <router-outlet></router-outlet>
-<img src="/assets/home/home-bg-image.png" alt="dentist image">
+
+<img src="/assets/home/home-bg-image.png" alt="dentist image" />
+
 <app-search-menu></app-search-menu>
+
 <app-footer></app-footer>

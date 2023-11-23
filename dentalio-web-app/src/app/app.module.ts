@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { SearchMenuComponent } from './search/search-menu/search-menu.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SearchMenuComponent } from './search/search-menu/search-menu.component'
     HeaderComponent,
     FooterComponent,
     SearchMenuComponent,
+    NavigationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, AuthModule],
   providers: [],
