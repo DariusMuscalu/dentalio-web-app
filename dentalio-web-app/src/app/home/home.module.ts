@@ -13,6 +13,6 @@ import { SearchMenuComponent } from '../search/search-menu/search-menu.component
     SearchMenuComponent,
   ],
   imports: [CommonModule],
-  exports: [HomeComponent],
+  exports: [HomeComponent, FooterComponent, HeaderComponent],
 })
 export class HomeModule {}
