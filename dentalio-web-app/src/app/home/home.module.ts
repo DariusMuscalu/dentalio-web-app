@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchCabinetMenuComponent } from './search-cabinet-menu/search-cabinet-menu.component';
-
-
+import { HomeComponent } from './home.component';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer/footer.component';
+import { SearchMenuComponent } from '../search/search-menu/search-menu.component';
 
 @NgModule({
   declarations: [
-    SearchCabinetMenuComponent
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    SearchMenuComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [HomeComponent],
 })
-export class HomeModule { }
+export class HomeModule {}
