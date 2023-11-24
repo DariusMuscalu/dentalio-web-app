@@ -1,4 +1,45 @@
-<div class="displayTable">
+<div class="container">
+  <h3>Autentificareeeeee</h3>
+  <div class="input-field">
+    <input
+      type="text"
+      class="formControl"
+      placeholder="Username"
+      #userName
+      required
+    />
+  </div>
+  <div class="input-field">
+    <input
+      type="password"
+      class="formControl"
+      placeholder="Password"
+      #userPassword
+      required
+    />
+  </div>
+  <div class="sign-up-btn">
+    <input
+      type="button"
+      class="main-btn"
+      value="Autentificare"
+      (click)="authService.SignIn(userName.value, userPassword.value)"
+    />
+  </div>
+
+  <span class="or"><span class="orInner">Sau</span></span>
+
+  <div class="forgotPassword">
+    <a routerLink="/forgot-password">Ai uitat parola?</a>
+  </div>
+
+  <div class="redirect-to-sign-up">
+    <span>Nu ai cont? </span>
+    <a routerLink="/register-user">Inregistreaza-te</a>
+  </div>
+</div>
+
+<!-- <div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock">
       <h3>Sign Up</h3>
@@ -39,4 +80,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

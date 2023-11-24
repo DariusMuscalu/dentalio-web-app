@@ -1,0 +1,33 @@
+:host > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+}
+
+.container {
+  background-color: #f7f7f7;
+  width: 30%;
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field {
+  min-width: 320px;
+  border: 1px solid #d9d9d9;
+  border-radius: 1rem;
+  margin: 0.3rem 0;
+}
+
+.main-btn {
+  min-width: 320px;
+}
+
+.redirect-to-sign-up {
+  margin: 0.5rem 0;
+}

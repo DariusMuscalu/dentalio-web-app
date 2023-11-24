@@ -22,11 +22,37 @@ button {
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
   color: inherit;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 a:visited {
-  color: inherit; 
+  color: inherit;
+}
+
+// === BUTTONS ===
+
+.main-btn {
+  cursor: pointer;
+  background-color: #1a2d50;
+  color: #fff;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  max-width: 350px;
+  font-size: 1.1rem;
+}
+
+// === INPUTS ===
+
+input {
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
