@@ -19,6 +19,11 @@ const routes: Routes = [
       import('./profile/profile/profile.module').then((m) => m.ProfileModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'discover',
+    loadChildren: () =>
+      import('./discover/discover.module').then((m) => m.DiscoverModule),
+  },
   // TODO Add wildcard route and pagenotfound component, see where you need to create it.
 ];
 

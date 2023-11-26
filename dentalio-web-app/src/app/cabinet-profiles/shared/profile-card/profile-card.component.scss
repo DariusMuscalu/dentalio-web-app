@@ -1,19 +1,18 @@
 .container {
-  position: absolute;
-  transform: translate(-50%, 0%);
-  left: 50%;
-  top: 25%;
   max-width: 600px;
+  margin: 0 auto;
   background-color: #fff;
   display: flex;
   border-radius: 1rem;
   cursor: pointer;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .add-to-favorites-btn {
-    background-color: gray;
-    padding: 0.5rem;
-    border-radius: 1rem;
+  background-color: gray;
+  padding: 0.5rem;
+  border-radius: 1rem;
 }
 
 .row {
@@ -25,5 +24,5 @@
 .profile-img {
   border-radius: 1rem 0rem 0 1rem;
   max-width: 300px;
-  margin-right: .4rem;
+  margin-right: 0.4rem;
 }
