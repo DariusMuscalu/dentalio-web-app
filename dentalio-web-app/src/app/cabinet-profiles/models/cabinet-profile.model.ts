@@ -79,7 +79,7 @@ export class CabinetProfileM {
     );
 
     return new CabinetProfileM({
-      id: '',
+      id: json.id,
       name: json.name,
       email: json.email,
       phoneNumber: json.phoneNumber,

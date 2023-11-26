@@ -4,6 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -22,20 +23,22 @@ export class CabinetProfilesService {
   }
 
   private loadCabinetProfiles() {
+    // Using snapshotChanges to get the document ID along with the data
     this.cabinetProfilesCollection
-      .valueChanges()
-      .subscribe((profiles: any[]) => {
-        // Clear the existing profiles
-        this.cabinetProfiles = [];
-
-        // Iterate through the profiles and convert each to CabinetProfileModel
-        profiles.forEach((profile) => {
-          const convertedProfile: CabinetProfileM =
-            CabinetProfileM.fromJson(profile);
-          this.cabinetProfiles.push(convertedProfile);
-
-          console.log(this.cabinetProfiles);
-        });
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          // Transforming each action into an object that includes the document ID and data
+          actions.map((a) => ({
+            id: a.payload.doc.id,
+            ...(a.payload.doc.data() as CabinetProfileM),
+          }))
+        )
+      )
+      .subscribe((profiles: CabinetProfileM[]) => {
+        // Storing the profiles with document IDs in the service property
+        this.cabinetProfiles = profiles;
+        console.log(this.cabinetProfiles);
       });
   }
 }
