@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>Autentificareeeeee</h3>
+  <h3>Inregistrare</h3>
   <div class="input-field">
     <input
       type="text"
@@ -22,8 +22,8 @@
     <input
       type="button"
       class="main-btn"
-      value="Autentificare"
-      (click)="authService.SignIn(userName.value, userPassword.value)"
+      value="Inregistrare"
+      (click)="authService.SignUp(userName.value, userPassword.value)"
     />
   </div>
 
@@ -35,7 +35,7 @@
 
   <div class="redirect-to-sign-up">
     <span>Nu ai cont? </span>
-    <a routerLink="/register-user">Inregistreaza-te</a>
+    <a routerLink="/sign-in">Autentificare</a>
   </div>
 </div>
 

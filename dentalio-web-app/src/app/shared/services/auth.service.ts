@@ -13,7 +13,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any; // Save logged in user data
+  userData: UserM | null = null;
+
   private isVisibleSubject = new BehaviorSubject<boolean>(false);
   isVisible$ = this.isVisibleSubject.asObservable();
 
@@ -27,12 +28,17 @@ export class AuthService {
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
+        this.userData = {
+          uid: user.uid,
+          email: user.email || '',
+          displayName: user.displayName || '',
+          photoURL: user.photoURL || '',
+          emailVerified: user.emailVerified || false,
+        };
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
       } else {
+        this.userData = null;
         localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
       }
     });
   }
@@ -126,15 +132,15 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+    const userRef: AngularFirestoreDocument<UserM> = this.afs.doc(
       `Users/${user.uid}`
     );
     const userData: UserM = {
       uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
+      email: user.email || '',
+      displayName: user.displayName || '',
+      photoURL: user.photoURL || '',
+      emailVerified: user.emailVerified || false,
     };
     return userRef.set(userData, {
       merge: true,
