@@ -1,9 +1,6 @@
 <app-header></app-header>
 <div class="grid-container">
-    <app-profile-card></app-profile-card>
-    <app-profile-card></app-profile-card>
-    <app-profile-card></app-profile-card>
-    <app-profile-card></app-profile-card>
-    <app-profile-card></app-profile-card>
-    <!-- Add more app-profile-card components as needed -->
-  </div>
+  <ng-container *ngFor="let profile of cabinetProfilesService.cabinetProfiles">
+    <app-profile-card [cabinetProfile]="profile"></app-profile-card>
+  </ng-container>
+</div>

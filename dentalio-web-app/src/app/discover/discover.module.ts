@@ -6,6 +6,8 @@ import { CabinetProfilesModule } from '../cabinet-profiles/cabinet-profiles.modu
 
 import { DiscoverPageComponent } from './pages/discover-page/discover-page.component';
 
+import { CabinetProfilesService } from '../cabinet-profiles/cabinet-profiles.service';
+
 @NgModule({
   declarations: [DiscoverPageComponent],
   imports: [
@@ -14,5 +16,6 @@ import { DiscoverPageComponent } from './pages/discover-page/discover-page.compo
     DiscoverRoutingModule,
     CabinetProfilesModule,
   ],
+  providers: [CabinetProfilesService],
 })
 export class DiscoverModule {}
