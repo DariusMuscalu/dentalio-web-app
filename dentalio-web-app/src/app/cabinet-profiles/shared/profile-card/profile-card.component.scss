@@ -1,28 +1,65 @@
 .container {
-  max-width: 600px;
+  position: relative;
+  max-width: 450px;
   margin: 0 auto;
   background-color: #fff;
   display: flex;
   border-radius: 1rem;
   cursor: pointer;
   flex-wrap: wrap;
-  justify-content: center;
+  font-weight: 500;
+  color: #333333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.add-to-favorites-btn {
-  background-color: gray;
-  padding: 0.5rem;
-  border-radius: 1rem;
+.container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .row {
   display: flex;
   justify-content: space-between;
-  padding: 0.4rem;
+  padding: 0.4rem 0;
 }
 
 .profile-img {
-  border-radius: 1rem 0rem 0 1rem;
-  max-width: 300px;
-  margin-right: 0.4rem;
+  max-width: 100%;
+}
+
+.card-body {
+  padding: 1rem 2rem;
+}
+
+.address {
+  font-size: 1.1rem;
+}
+
+.review-row {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.rating {
+  margin: 0 1.5rem;
+  font-weight: bold;
+}
+
+// === ADD TO FAVORITE BTN ===
+
+.add-to-favorite-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.7rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.add-to-favorite-btn:hover {
+  background-color: rgba(255, 255, 255);
 }

@@ -38,7 +38,6 @@ export class CabinetProfilesService {
       .subscribe((profiles: CabinetProfileM[]) => {
         // Storing the profiles with document IDs in the service property
         this.cabinetProfiles = profiles;
-        console.log(this.cabinetProfiles);
       });
   }
 }

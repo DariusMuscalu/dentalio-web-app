@@ -12,15 +12,16 @@
       <h2>{{ cabinetProfile?.name }}</h2>
 
       <div class="add-to-favorite-btn">
+        <!-- TODO Move to top right corner, as the mobile design -->
         <img src="assets/nav/heart.svg" alt="heart icon" />
       </div>
     </div>
 
-    <p>{{ cabinetProfile?.address.address }}</p>
+    <p class="address">{{ cabinetProfile?.address.address }}</p>
     <div class="review-row">
       <img src="assets/star.svg" alt="star icon" />
-      <span>5.0</span>
-      <span>{{ cabinetProfile?.numOfReviews }}</span>
+      <span class="rating">5.0</span>
+      <span>{{ cabinetProfile?.numOfReviews }} Recenzii</span>
     </div>
   </div>
 </div>
