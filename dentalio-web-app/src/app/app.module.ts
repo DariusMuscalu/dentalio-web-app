@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { CabinetProfilesModule } from './cabinet-profiles/cabinet-profiles.module';
 
 // Firebase services + environment module
 import { AngularFireModule } from '@angular/fire/compat';
@@ -23,7 +22,6 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     AuthModule,
     HomeModule,
-    CabinetProfilesModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

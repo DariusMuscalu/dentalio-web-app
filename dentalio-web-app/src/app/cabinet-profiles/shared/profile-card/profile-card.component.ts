@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CabinetProfilesService } from '../../cabinet-profiles.service';
 import { CabinetProfileM } from '../../models/cabinet-profile.model';
 @Component({
   selector: 'app-profile-card',

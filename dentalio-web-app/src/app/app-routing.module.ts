@@ -24,6 +24,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./discover/discover.module').then((m) => m.DiscoverModule),
   },
+  {
+    path: 'cabinet-profile-details',
+    loadChildren: () =>
+      import(
+        './cabinet-profiles/pages/cabinet-profile-details-page/cabinet-profile-details-page.module'
+      ).then((m) => m.CabinetProfileDetailsPageModule),
+  },
   // TODO Add wildcard route and pagenotfound component, see where you need to create it.
 ];
 

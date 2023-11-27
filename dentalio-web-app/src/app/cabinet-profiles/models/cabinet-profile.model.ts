@@ -102,24 +102,4 @@ export class CabinetProfileM {
       services: servicesList,
     });
   }
-
-  toJson(): any {
-    return {
-      id: this.id,
-      name: this.name,
-      email: this.email,
-      phoneNumber: this.phoneNumber,
-      avatarUrl: this.avatarUrl,
-      numOfReviews: this.numOfReviews,
-      staff: this.staff.map((staffMember) => staffMember.toJson()),
-      reviews: this.reviews.map((review) => review.toJson()),
-      address: this.address,
-      // location: this.location,
-      gallery: this.gallery,
-      // notifications: this.notifications
-      //   ? this.notifications.map((notification) => notification.toJson())
-      //   : undefined,
-      services: this.services.map((service) => service.toJson()),
-    };
-  }
 }

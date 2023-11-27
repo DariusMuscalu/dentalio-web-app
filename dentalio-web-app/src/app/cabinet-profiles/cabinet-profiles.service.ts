@@ -12,23 +12,24 @@ import { map } from 'rxjs/operators';
 export class CabinetProfilesService {
   cabinetProfilesCollection: AngularFirestoreCollection<CabinetProfileM>;
   cabinetProfiles: CabinetProfileM[] = [];
+  selectedCabinetProfile: CabinetProfileM | undefined;
 
   constructor(private firestore: AngularFirestore) {
-    // Reference to the CabinetProfiles collection
     this.cabinetProfilesCollection =
       firestore.collection<CabinetProfileM>('CabinetProfiles');
 
-    // Load the cabinet profiles when the service is constructed
+    // Load all profiles (optional, if you want to keep the list updated)
     this.loadCabinetProfiles();
+
+    // Load the selected profile by ID
+    this.loadSelectedCabinetProfile('n3alAdTk2ye5Ukcqe1PmJ44TZ3J2');
   }
 
   private loadCabinetProfiles() {
-    // Using snapshotChanges to get the document ID along with the data
     this.cabinetProfilesCollection
       .snapshotChanges()
       .pipe(
         map((actions) =>
-          // Transforming each action into an object that includes the document ID and data
           actions.map((a) => ({
             id: a.payload.doc.id,
             ...(a.payload.doc.data() as CabinetProfileM),
@@ -36,8 +37,24 @@ export class CabinetProfilesService {
         )
       )
       .subscribe((profiles: CabinetProfileM[]) => {
-        // Storing the profiles with document IDs in the service property
         this.cabinetProfiles = profiles;
+      });
+  }
+
+  private loadSelectedCabinetProfile(profileId: string): void {
+    const profileDoc = this.cabinetProfilesCollection.doc(profileId);
+
+    profileDoc
+      .snapshotChanges()
+      .pipe(
+        map((a) => ({
+          id: a.payload.id,
+          ...(a.payload.data() as CabinetProfileM),
+        }))
+      )
+      .subscribe((profile: CabinetProfileM) => {
+        console.log('Received cabinet profile data:', profile);
+        this.selectedCabinetProfile = profile;
       });
   }
 }
