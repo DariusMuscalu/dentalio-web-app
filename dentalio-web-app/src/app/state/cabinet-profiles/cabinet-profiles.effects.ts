@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
+  fetchCabinetProfileById,
+  fetchCabinetProfileByIdFailure,
+  fetchCabinetProfileByIdSuccess,
   fetchCabinetProfiles,
   fetchCabinetProfilesFailure,
   fetchCabinetProfilesSuccess,
@@ -26,6 +29,23 @@ export class CabinetProfilesEffects {
           // If errors return a new failure action
           catchError((error) => of(fetchCabinetProfilesFailure({ error })))
         )
+      )
+    )
+  );
+
+  fetchCabinetProfileById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fetchCabinetProfileById),
+      switchMap((action) =>
+        this.cabinetProfilesService
+          .getCabinetProfileById(action.cabinetId)
+          .pipe(
+            map((cabinetProfile) =>
+              fetchCabinetProfileByIdSuccess({ cabinetProfile })
+            ),
+            // If errors return a new failure action
+            catchError((error) => of(fetchCabinetProfileByIdFailure({ error })))
+          )
       )
     )
   );

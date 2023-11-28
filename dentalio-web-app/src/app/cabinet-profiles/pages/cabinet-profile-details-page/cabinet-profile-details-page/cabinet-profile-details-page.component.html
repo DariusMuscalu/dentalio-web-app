@@ -1,5 +1,22 @@
 <div class="container">
   <h2>TODO Finish this feature.</h2>
-  <!-- <h2>Name: {{ cabinetProfilesService.selectedCabinetProfile?.name }}</h2> -->
-  <div class="grid-container">
+
+  <!-- Loading state -->
+  <ng-container *ngIf="status$ | async as status">
+    <div *ngIf="status === 'loading'">Loading...</div>
+  </ng-container>
+
+  <!-- Success state -->
+  <ng-container *ngIf="status$ | async as status">
+    <ng-container *ngIf="status === 'success'; else loadingOrError">
+      <ng-container *ngIf="selectedCabinetProfile$ | async as CabinetProfileM">
+        <p>Test {{ CabinetProfileM?.name }}</p>
+      </ng-container>
+    </ng-container>
+
+    <!-- Error state -->
+    <ng-template #loadingOrError>
+      <div *ngIf="status === 'error'">Error loading data.</div>
+    </ng-template>
+  </ng-container>
 </div>

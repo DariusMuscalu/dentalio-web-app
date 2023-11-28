@@ -14,3 +14,18 @@ export const fetchCabinetProfilesFailure = createAction(
   '[Discover Page] Fetch Cabinet Profiles Failure',
   props<{ error: string }>()
 );
+
+export const fetchCabinetProfileById = createAction(
+  '[Discover Page] Fetch Cabinet Profile By Id',
+  props<{ cabinetId: string }>()
+);
+
+export const fetchCabinetProfileByIdSuccess = createAction(
+  '[Discover Page] Fetch Cabinet Profile By Id Success',
+  props<{ cabinetProfile: CabinetProfileM }>()
+);
+
+export const fetchCabinetProfileByIdFailure = createAction(
+  '[Discover Page] Fetch Cabinet Profile By Id Failure',
+  props<{ error: string }>()
+);

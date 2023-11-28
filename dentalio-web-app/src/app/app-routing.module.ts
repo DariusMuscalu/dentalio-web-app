@@ -25,7 +25,7 @@ const routes: Routes = [
       import('./discover/discover.module').then((m) => m.DiscoverModule),
   },
   {
-    path: 'cabinet-profile-details',
+    path: 'cabinet-profile-details/:cabinetId',
     loadChildren: () =>
       import(
         './cabinet-profiles/pages/cabinet-profile-details-page/cabinet-profile-details-page.module'
