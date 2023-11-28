@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { CabinetProfilesService } from 'src/app/cabinet-profiles/cabinet-profiles.service';
+import { Store } from '@ngrx/store';
+import { fetchCabinetProfiles } from 'src/app/state/cabinet-profiles/cabinet-profiles.actions';
+import { selectAllCabinetProfiles } from 'src/app/state/cabinet-profiles/cabinet-profiles.selectors';
 
 @Component({
   selector: 'app-discover-page',
@@ -7,5 +9,11 @@ import { CabinetProfilesService } from 'src/app/cabinet-profiles/cabinet-profile
   styleUrls: ['./discover-page.component.scss'],
 })
 export class DiscoverPageComponent {
-  constructor(public cabinetProfilesService: CabinetProfilesService) {}
+  public cabinetProfiles$ = this.store.select(selectAllCabinetProfiles);
+
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    this.store.dispatch(fetchCabinetProfiles());
+  }
 }
