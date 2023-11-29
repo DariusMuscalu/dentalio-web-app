@@ -1,15 +1,8 @@
 import { AddressM } from './address.model';
+import { GalleryImageM } from './gallery-image.model';
 import { ReviewM } from './review.model';
 import { ServiceM } from './service.model';
 import { StaffMemberM } from './staff-member.model';
-
-//   interface NotificationM {
-//     // Define the properties for NotificationM
-//   }
-
-//   interface GeoPoint {
-//     // Define the properties for GeoPoint
-//   }
 
 export class CabinetProfileM {
   id: string;
@@ -21,13 +14,8 @@ export class CabinetProfileM {
   staff: StaffMemberM[];
   reviews: ReviewM[];
   address: AddressM;
-  // location: GeoPoint;
-  gallery: string[];
-  // notifications?: NotificationM[];
+  gallery: GalleryImageM[];
   services: ServiceM[];
-
-  // TODO Add contact
-  // TODO Add schedule
 
   constructor({
     id,
@@ -39,11 +27,9 @@ export class CabinetProfileM {
     staff,
     reviews,
     address,
-    //   location,
     gallery,
     services,
-  }: //   notifications,
-  {
+  }: {
     id: string;
     name: string;
     email: string;
@@ -53,10 +39,8 @@ export class CabinetProfileM {
     staff: StaffMemberM[];
     reviews: ReviewM[];
     address: AddressM;
-    //   location: GeoPoint;
-    gallery: string[];
+    gallery: GalleryImageM[];
     services: ServiceM[];
-    //   notifications?: NotificationM[];
   }) {
     this.id = id;
     this.name = name;
@@ -67,15 +51,17 @@ export class CabinetProfileM {
     this.staff = staff;
     this.reviews = reviews;
     this.address = address;
-    //   this.location = location;
     this.gallery = gallery;
     this.services = services;
-    //   this.notifications = notifications;
   }
 
   static fromJson(json: any): CabinetProfileM {
     const servicesList: ServiceM[] = (json.services || []).map((service: any) =>
       ServiceM.fromJson(service)
+    );
+
+    const galleryList: GalleryImageM[] = (json.gallery || []).map(
+      (galleryImage: any) => GalleryImageM.fromJson(galleryImage)
     );
 
     return new CabinetProfileM({
@@ -92,13 +78,7 @@ export class CabinetProfileM {
         ReviewM.fromJson(review)
       ),
       address: AddressM.fromJson(json.address),
-      // location: json.location,
-      gallery: json.gallery || [],
-      // notifications: json.notifications
-      //   ? json.notifications.map(
-      //       (notification: any) => NotificationM.fromJson(notification)
-      //     )
-      //   : undefined,
+      gallery: galleryList,
       services: servicesList,
     });
   }

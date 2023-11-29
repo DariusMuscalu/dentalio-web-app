@@ -1,6 +1,5 @@
+<app-header></app-header>
 <div class="container">
-  <h2>TODO Finish this feature.</h2>
-
   <!-- Loading state -->
   <ng-container *ngIf="status$ | async as status">
     <div *ngIf="status === 'loading'">Loading...</div>
@@ -10,7 +9,47 @@
   <ng-container *ngIf="status$ | async as status">
     <ng-container *ngIf="status === 'success'; else loadingOrError">
       <ng-container *ngIf="selectedCabinetProfile$ | async as CabinetProfileM">
-        <p>Test {{ CabinetProfileM?.name }}</p>
+        <h2 class="cabinet-name">{{ CabinetProfileM?.name }}</h2>
+
+        <div class="content-card">
+          <img [src]="CabinetProfileM?.avatarUrl" alt="cabinet gallery image" />
+          <p>{{ CabinetProfileM?.address.address }}</p>
+
+          <div class="capsule-row">
+            <div class="capsule-btn">
+              <span>Servicii</span>
+            </div>
+
+            <div class="capsule-btn">
+              <span>Galerie</span>
+            </div>
+
+            <div class="capsule-btn">
+              <span>Recenzii</span>
+            </div>
+
+            <div class="capsule-btn">
+              <span>Contact</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <div class="staff-member">
+            <p>{{CabinetProfileM?.staff[0].firstName }}  {{CabinetProfileM?.staff[0].lastName }}</p>
+          </div>
+
+          <div class="service-card">
+            <img src="assets/tooth.svg" alt="tooth svg" />
+
+            <div class="name-price-col">
+              <p>Serviciu de test</p>
+              <span>150 lei</span>
+            </div>
+
+            <div class="reserve-btn main-btn">Rezerva</div>
+          </div>
+        </div>
       </ng-container>
     </ng-container>
 

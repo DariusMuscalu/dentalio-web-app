@@ -30,17 +30,17 @@ export class CabinetProfileDetailsPageComponent implements OnInit {
     this.status$.subscribe((status) => {
       // DEBUGGING PURPOSES
       // You can perform actions based on the status here
-      // if (status === 'loading') {
-      //   // Do something when loading
-      // } else if (status === 'success') {
-      //   // Access the selected cabinet data when the status is 'success'
-      //   this.selectedCabinetProfile$.subscribe((cabinet) => {
-      //     console.log('Selected Cabinet Data:', cabinet);
-      //   });
-      //   // Do something when successful
-      // } else if (status === 'error') {
-      //   // Do something when there's an error
-      // }
+      if (status === 'loading') {
+        // Do something when loading
+      } else if (status === 'success') {
+        // Access the selected cabinet data when the status is 'success'
+        this.selectedCabinetProfile$.subscribe((cabinet) => {
+          console.log('Selected Cabinet Data:', cabinet);
+        });
+        // Do something when successful
+      } else if (status === 'error') {
+        // Do something when there's an error
+      }
     });
   }
 }

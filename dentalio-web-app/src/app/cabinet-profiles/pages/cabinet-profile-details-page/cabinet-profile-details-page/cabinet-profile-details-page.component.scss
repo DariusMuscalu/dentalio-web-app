@@ -1,0 +1,59 @@
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.cabinet-name {
+  font-size: 2.2rem;
+  color: #333333;
+  font-weight: bold;
+  margin: 5rem 0;
+}
+
+.content-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  margin: 3rem 0;
+}
+
+.capsule-row {
+  display: flex;
+  height: 2.2rem;
+}
+
+.capsule-btn {
+  background-color: #1a2d50;
+  color: #fff;
+  border-radius: 5rem;
+  padding: 0.5rem;
+  text-align: center;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+img {
+  width: 250px;
+  height: 250px;
+}
+
+// === SERVICE CARD ===
+
+.service-card {
+    border: 1px solid #333333;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-price-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card img {
+    width: 70px;
+    height: 70px;
+}

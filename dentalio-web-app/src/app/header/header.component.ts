@@ -10,7 +10,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class HeaderComponent {
   constructor(
     private authService: AuthService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
   ) {}
 
   toggleAuthModalVisibility() {
