@@ -8,50 +8,157 @@
   <!-- Success state -->
   <ng-container *ngIf="status$ | async as status">
     <ng-container *ngIf="status === 'success'; else loadingOrError">
-      <ng-container *ngIf="selectedCabinetProfile$ | async as CabinetProfileM">
-        <h2 class="cabinet-name">{{ CabinetProfileM?.name }}</h2>
+      <ng-container *ngIf="selectedCabinetProfile$ | async as cabinetProfile">
+        <h2 class="cabinet-name">{{ cabinetProfile?.name }}</h2>
 
         <div class="content-card">
-          <img [src]="CabinetProfileM?.avatarUrl" alt="cabinet gallery image" />
-          <p>{{ CabinetProfileM?.address.address }}</p>
+          <div class="header">
+            <img
+              [src]="cabinetProfile?.avatarUrl"
+              alt="cabinet gallery image"
+              class="cabinet-avatar"
+            />
 
-          <div class="capsule-row">
-            <div class="capsule-btn">
-              <span>Servicii</span>
-            </div>
+            <div class="col">
+              <div class="favorite-btn">
+                <img
+                  src="assets/nav/heart.svg"
+                  alt="heart icon"
+                  class="favorite-svg"
+                />
+              </div>
 
-            <div class="capsule-btn">
-              <span>Galerie</span>
-            </div>
+              <div class="address-row">
+                <img
+                  src="assets/search-menu/location.svg"
+                  alt="location svg"
+                  class="location-svg"
+                />
+                <p class="address">
+                  {{ cabinetProfile?.address.city }},
+                  {{ cabinetProfile?.address.address }}
+                </p>
+              </div>
 
-            <div class="capsule-btn">
-              <span>Recenzii</span>
-            </div>
+              <div class="reviews-row">
+                <img src="assets/star.svg" alt="star svg" />
+                <span class="rating">4.7 </span>
+                <span class="num-of-reviews"
+                  >{{ cabinetProfile?.reviews.length }} Recenzii</span
+                >
+              </div>
 
-            <div class="capsule-btn">
-              <span>Contact</span>
+              <div class="capsule-row">
+                <div class="capsule-btn">
+                  <span>Servicii</span>
+                </div>
+
+                <div class="capsule-btn">
+                  <span>Galerie</span>
+                </div>
+
+                <div class="capsule-btn">
+                  <span>Recenzii</span>
+                </div>
+
+                <div class="capsule-btn">
+                  <span>Contact</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="content-card">
           <div class="staff-member">
-            <p>{{CabinetProfileM?.staff[0].firstName }}  {{CabinetProfileM?.staff[0].lastName }}</p>
+            <p>
+              {{ cabinetProfile?.staff[0].firstName }}
+              {{ cabinetProfile?.staff[0].lastName }}
+            </p>
           </div>
 
-          <div class="service-card">
-            <img src="assets/tooth.svg" alt="tooth svg" />
+          <div class="services-grid">
+            <div
+              class="service-card"
+              *ngFor="let service of cabinetProfile?.services"
+            >
+              <img src="assets/tooth.svg" alt="tooth svg" />
 
-            <div class="name-price-col">
-              <p>Serviciu de test</p>
-              <span>150 lei</span>
+              <div class="name-price-col">
+                <p>{{ service.name }}</p>
+                <span>{{ service.price }} Lei</span>
+              </div>
+
+              <div class="reserve-btn main-btn">Rezerva</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <span class="content-card-title">Galerie</span>
+
+          <div class="gallery">
+            <div
+              class="gallery-image"
+              *ngFor="let galleryImage of cabinetProfile?.gallery"
+            >
+              <img
+                [src]="galleryImage.imageUrl"
+                alt="gallery image"
+                class="gallery-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <span class="content-card-title">Recenzii</span>
+
+          <div class="review-cards-grid">
+            <div
+              class="review-card"
+              *ngFor="let review of cabinetProfile?.reviews"
+            >
+              <img
+                [src]="review.reviewerAvatarUrl"
+                alt="Review Avatar"
+                class="avatar-img"
+              />
+              <div class="review-details-col">
+                <p class="reviewer-name">{{ review.reviewerName }}</p>
+                <p>{{ review.description }}</p>
+                <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
+              </div>
             </div>
 
-            <div class="reserve-btn main-btn">Rezerva</div>
+            <!-- Remove after adjusting the layout -->
+            <div
+              class="review-card"
+              *ngFor="let review of cabinetProfile?.reviews"
+            >
+              <img
+                [src]="review.reviewerAvatarUrl"
+                alt="Review Avatar"
+                class="avatar-img"
+              />
+              <p>{{ review.reviewerName }}</p>
+              <p>{{ review.description }}</p>
+              <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <div
+            class="schedule"
+            *ngFor="let scheduleDay of cabinetProfile?.schedule"
+          >
+            <p>{{ schedule }}</p>
           </div>
         </div>
       </ng-container>
     </ng-container>
+    <star-rating [starType]="'svg'" [rating]="2"></star-rating>
 
     <!-- Error state -->
     <ng-template #loadingOrError>
