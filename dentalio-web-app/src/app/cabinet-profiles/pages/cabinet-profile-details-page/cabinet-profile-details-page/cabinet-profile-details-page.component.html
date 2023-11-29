@@ -71,7 +71,13 @@
 
         <div class="content-card">
           <div class="staff-member">
-            <p>
+            <img
+              [src]="cabinetProfile?.staff[0].avatarUrl"
+              alt="staff profile image"
+              class="staff-avatar"
+            />
+            <p class="staff-name">
+              Dr
               {{ cabinetProfile?.staff[0].firstName }}
               {{ cabinetProfile?.staff[0].lastName }}
             </p>
@@ -85,7 +91,7 @@
               <img src="assets/tooth.svg" alt="tooth svg" />
 
               <div class="name-price-col">
-                <p>{{ service.name }}</p>
+                <p class="service-name">{{ service.name }}</p>
                 <span>{{ service.price }} Lei</span>
               </div>
 
@@ -126,8 +132,20 @@
               />
               <div class="review-details-col">
                 <p class="reviewer-name">{{ review.reviewerName }}</p>
+                <div class="stars-row">
+                  <ng-container
+                    *ngFor="let _ of [0, 1, 2, 3, 4]; let i = index"
+                  >
+                    <img
+                      src="assets/{{
+                        i < review.numOfStars ? 'star' : 'empty-star'
+                      }}.svg"
+                      alt="star svg"
+                      class="star-svg"
+                    />
+                  </ng-container>
+                </div>
                 <p>{{ review.description }}</p>
-                <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
               </div>
             </div>
 
@@ -148,14 +166,15 @@
           </div>
         </div>
 
-        <div class="content-card">
+        <!-- TODO I THINK THIS WILL BE ADDED AFTER MPV, CURRENTLY IN THE MOBILE APP THIS IS NOT ADDED, SO I FIRST TO ADD IT THERE TOO. -->
+        <!-- <div class="content-card">
           <div
             class="schedule"
             *ngFor="let scheduleDay of cabinetProfile?.schedule"
           >
             <p>{{ schedule }}</p>
           </div>
-        </div>
+        </div> -->
       </ng-container>
     </ng-container>
     <star-rating [starType]="'svg'" [rating]="2"></star-rating>
