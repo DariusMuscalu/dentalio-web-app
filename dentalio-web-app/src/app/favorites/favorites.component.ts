@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/state/app.state';
+import { AppState } from 'src/app/app.state';
 import { fetchFavorites } from './state/favorites.actions';
 import {
   selectAllFavoriteCabinetProfiles,

@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { FavoritesState } from './favorites.reducer';
-import { AppState } from 'src/app/state/app.state';
+import { AppState } from 'src/app/app.state';
 
 export const selectFavoriteCabinetProfiles = (state: AppState) =>
   state.favoriteCabinetProfiles;

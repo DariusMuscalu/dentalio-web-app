@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/state/app.state';
-import { fetchCabinetProfiles } from 'src/app/state/cabinet-profiles/cabinet-profiles.actions';
-import { selectAllCabinetProfiles } from 'src/app/state/cabinet-profiles/cabinet-profiles.selectors';
+import { AppState } from 'src/app/app.state';
+import { fetchCabinetProfiles } from 'src/app/cabinet-profiles/state/cabinet-profiles.actions';
+import { selectAllCabinetProfiles } from 'src/app/cabinet-profiles/state/cabinet-profiles.selectors';
 
 @Component({
   selector: 'app-discover-page',

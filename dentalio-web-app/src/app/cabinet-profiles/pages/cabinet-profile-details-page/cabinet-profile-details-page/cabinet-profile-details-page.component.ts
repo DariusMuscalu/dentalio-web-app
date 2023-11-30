@@ -3,12 +3,12 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AppState } from 'src/app/state/app.state';
+import { AppState } from 'src/app/app.state';
 import {
   selectCabinetProfileById,
   selectCabinetProfileByIdStatus,
-} from 'src/app/state/cabinet-profiles/cabinet-profiles.selectors';
-import { fetchCabinetProfileById } from 'src/app/state/cabinet-profiles/cabinet-profiles.actions';
+} from 'src/app/cabinet-profiles/state/cabinet-profiles.selectors';
+import { fetchCabinetProfileById } from 'src/app/cabinet-profiles/state/cabinet-profiles.actions';
 import { CabinetProfileM } from 'src/app/cabinet-profiles/models/cabinet-profile.model';
 
 @Component({
