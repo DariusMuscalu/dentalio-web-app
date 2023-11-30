@@ -5,6 +5,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from '../footer/footer/footer.component';
 import { NavigationComponent } from './layouts/navigation/navigation.component';
 import { AuthModule } from '../auth/auth.module';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     FavoriteButtonComponent,
@@ -12,7 +13,7 @@ import { AuthModule } from '../auth/auth.module';
     FooterComponent,
     NavigationComponent,
   ],
-  imports: [CommonModule, AuthModule],
+  imports: [CommonModule, AuthModule, RouterModule],
   exports: [
     FavoriteButtonComponent,
     HeaderComponent,

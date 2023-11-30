@@ -22,9 +22,10 @@ import { cabinetProfilesReducer } from './cabinet-profiles/state/cabinet-profile
 import { CabinetProfilesEffects } from './cabinet-profiles/state/cabinet-profiles.effects';
 import { FavoritesEffects } from './favorites/state/favorites.effects';
 import { favoritesReducer } from './favorites/state/favorites.reducer';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

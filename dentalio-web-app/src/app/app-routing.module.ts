@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { AuthGuard } from './shared/guard/auth.guard';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +37,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./favorites/favorites.module').then((m) => m.FavoritesModule),
   },
-  // TODO Add wildcard route and pagenotfound component, see where you need to create it.
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
