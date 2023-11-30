@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DiscoverRoutingModule } from './discover-routing.module';
-import { HomeModule } from '../home/home.module';
+import { SharedModule } from '../shared/shared.module';
 import { CabinetProfilesModule } from '../cabinet-profiles/cabinet-profiles.module';
 
 import { DiscoverPageComponent } from './pages/discover-page/discover-page.component';
@@ -9,7 +9,7 @@ import { DiscoverPageComponent } from './pages/discover-page/discover-page.compo
   declarations: [DiscoverPageComponent],
   imports: [
     CommonModule,
-    HomeModule,
+    SharedModule,
     DiscoverRoutingModule,
     CabinetProfilesModule,
   ],
