@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationService } from '../../../navigation/navigation.service';
+import { NavigationService } from 'src/app/shared/layouts/navigation/navigation.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  isAuthMenuVisible$ = this.authService.isVisible$;
+  isNavMenuVisible$ = this.navigationService.isVisible$;
+
   constructor(
     private authService: AuthService,
     private navigationService: NavigationService,

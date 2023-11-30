@@ -1,14 +1,6 @@
 <app-header></app-header>
-<div *ngIf="isVisible$ | async">
-  <div class="auth-overlay-shadow">
-    <app-auth-options></app-auth-options>
-  </div>
-</div>
 
-<div *ngIf="isNavMenuVisible$ | async">
-  <app-navigation></app-navigation>
-</div>
-
+<!-- TODO I think it should be set as a background image instead of adding it like this -->
 <img src="/assets/home/home-bg-image.png" alt="dentist image" />
 
 <app-search-menu></app-search-menu>

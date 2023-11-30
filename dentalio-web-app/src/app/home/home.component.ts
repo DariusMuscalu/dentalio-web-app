@@ -1,5 +1,5 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
-import { NavigationService } from '../navigation/navigation.service';
+import { NavigationService } from '../shared/layouts/navigation/navigation.service';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({

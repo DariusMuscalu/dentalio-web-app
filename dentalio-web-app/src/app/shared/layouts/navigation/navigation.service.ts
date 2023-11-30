@@ -11,6 +11,8 @@ export class NavigationService {
   constructor() {}
 
   toggleNavMenuVisibility() {
-    this.isVisibleSubject.next(!this.isVisibleSubject.value);
+    const currentState = this.isVisibleSubject.value;
+    console.log(`Current State: ${currentState}`);
+    this.isVisibleSubject.next(!currentState);
   }
 }
