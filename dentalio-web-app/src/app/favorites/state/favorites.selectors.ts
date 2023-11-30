@@ -14,3 +14,7 @@ export const selectFavoriteCabinetProfilesStatus = createSelector(
   (state) => state.status
 );
 
+export const selectFavoriteIds = createSelector(
+  selectFavoriteCabinetProfiles,
+  (state: FavoritesState) => state.favoriteCabinetProfilesIds
+);

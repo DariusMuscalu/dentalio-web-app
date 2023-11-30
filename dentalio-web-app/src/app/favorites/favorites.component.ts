@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.state';
-import { fetchFavorites } from './state/favorites.actions';
+import { AppState } from '../app.state';
 import {
   selectAllFavoriteCabinetProfiles,
   selectFavoriteCabinetProfilesStatus,
@@ -22,19 +21,4 @@ export class FavoritesComponent {
   );
 
   constructor(private store: Store<AppState>) {}
-
-  ngOnInit() {
-    // Dispatch the action to fetch favorites
-    this.store.dispatch(fetchFavorites());
-
-    // Subscribe to favoriteCabinetProfiles$ to log changes
-    this.favoriteCabinetProfiles$.subscribe((favorites) => {
-      console.log('Favorite Cabinet Profiles:', favorites);
-    });
-
-    // Subscribe to favoritesStatus$ to log status changes
-    this.favoritesStatus$.subscribe((status) => {
-      console.log('Favorites Status:', status);
-    });
-  }
 }

@@ -4,12 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AppState } from 'src/app/app.state';
+import { fetchCabinetProfileById } from 'src/app/cabinet-profiles/state/cabinet-profiles.actions';
+import { CabinetProfileM } from 'src/app/cabinet-profiles/models/cabinet-profile.model';
 import {
   selectCabinetProfileById,
   selectCabinetProfileByIdStatus,
 } from 'src/app/cabinet-profiles/state/cabinet-profiles.selectors';
-import { fetchCabinetProfileById } from 'src/app/cabinet-profiles/state/cabinet-profiles.actions';
-import { CabinetProfileM } from 'src/app/cabinet-profiles/models/cabinet-profile.model';
+import { selectFavoriteIds } from 'src/app/favorites/state/favorites.selectors';
 
 @Component({
   selector: 'app-cabinet-profile-details-page',
@@ -22,6 +23,7 @@ export class CabinetProfileDetailsPageComponent implements OnInit, OnDestroy {
   public status$: Observable<string> = this.store.select(
     selectCabinetProfileByIdStatus
   );
+  public favoriteIds$ = this.store.select(selectFavoriteIds);
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
@@ -40,6 +42,16 @@ export class CabinetProfileDetailsPageComponent implements OnInit, OnDestroy {
         // Access the selected cabinet data
         console.log('Selected Cabinet Data:', cabinet);
       });
+  }
+
+  isFavorite(cabinetId: string): boolean {
+    let isFavorite = false;
+    this.favoriteIds$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((favoriteIds) => {
+        isFavorite = favoriteIds.includes(cabinetId);
+      });
+    return isFavorite;
   }
 
   ngOnDestroy() {

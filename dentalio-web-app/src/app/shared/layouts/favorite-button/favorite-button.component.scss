@@ -1,0 +1,12 @@
+.add-to-favorite-btn {
+  background-color: rgba(224, 224, 224, 0.7);
+  padding: 0.7rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-to-favorite-btn:hover {
+  background-color: rgba(224, 224, 224);
+}

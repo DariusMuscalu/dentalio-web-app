@@ -11,10 +11,10 @@
     <div class="row">
       <h2>{{ cabinetProfile?.name }}</h2>
 
-      <div class="add-to-favorite-btn">
-        <!-- TODO Move to top right corner, as the mobile design -->
-        <img src="assets/nav/heart.svg" alt="heart icon" />
-      </div>
+      <app-favorite-button
+        [isFavorite]="isFavorite(cabinetProfile?.id)"
+        class="favorite-btn"
+      ></app-favorite-button>
     </div>
 
     <p class="address">{{ cabinetProfile?.address.address }}</p>

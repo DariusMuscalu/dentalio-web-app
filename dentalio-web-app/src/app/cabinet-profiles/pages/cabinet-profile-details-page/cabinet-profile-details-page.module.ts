@@ -4,7 +4,7 @@ import { CabinetProfileDetailsPageComponent } from './cabinet-profile-details-pa
 import { CabinetProfileDetailsPageRoutingModule } from './cabinet-profile-details-page-routing.module';
 import { CabinetProfilesModule } from '../../cabinet-profiles.module';
 import { HomeModule } from 'src/app/home/home.module';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [CabinetProfileDetailsPageComponent],
   imports: [
@@ -12,6 +12,7 @@ import { HomeModule } from 'src/app/home/home.module';
     CabinetProfileDetailsPageRoutingModule,
     CabinetProfilesModule,
     HomeModule,
+    SharedModule,
   ],
 })
 export class CabinetProfileDetailsPageModule {}

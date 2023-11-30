@@ -8,12 +8,14 @@ import {
 
 export interface FavoritesState {
   favoriteCabinetProfiles: CabinetProfileM[];
+  favoriteCabinetProfilesIds: string[];
   error: string;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const initialState: FavoritesState = {
   favoriteCabinetProfiles: [],
+  favoriteCabinetProfilesIds: [],
   error: null,
   status: 'pending',
 };
@@ -29,12 +31,19 @@ export const favoritesReducer = createReducer(
   })),
 
   // Handle successfully fetched cabinet profiles.
-  on(fetchFavoritesSuccess, (state, { favoriteCabinetProfiles }) => ({
-    ...state,
-    favoriteCabinetProfiles: favoriteCabinetProfiles,
-    error: null,
-    status: <const>'success',
-  })),
+  on(fetchFavoritesSuccess, (state, { favoriteCabinetProfiles }) => {
+    const favoriteCabinetProfilesIds = favoriteCabinetProfiles.map(
+      (profile) => profile.id
+    );
+
+    return {
+      ...state,
+      favoriteCabinetProfiles: favoriteCabinetProfiles,
+      favoriteCabinetProfilesIds: favoriteCabinetProfilesIds,
+      error: null,
+      status: <const>'success',
+    };
+  }),
 
   // Handle favorite cabinet profiles fetch failure.
   on(fetchFavoritesFailure, (state, { error }) => ({

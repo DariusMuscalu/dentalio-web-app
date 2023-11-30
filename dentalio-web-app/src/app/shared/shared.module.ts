@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { FavoriteButtonComponent } from './layouts/favorite-button/favorite-button.component';
 
 @NgModule({
-  declarations: [
-    ProfileCardComponent
-  ],
+  declarations: [FavoriteButtonComponent],
   imports: [CommonModule],
+  exports: [FavoriteButtonComponent],
 })
 export class SharedModule {}

@@ -47,19 +47,8 @@
   font-weight: bold;
 }
 
-// === ADD TO FAVORITE BTN ===
-
-.add-to-favorite-btn {
+.favorite-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 0.7rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.add-to-favorite-btn:hover {
-  background-color: rgba(255, 255, 255);
 }

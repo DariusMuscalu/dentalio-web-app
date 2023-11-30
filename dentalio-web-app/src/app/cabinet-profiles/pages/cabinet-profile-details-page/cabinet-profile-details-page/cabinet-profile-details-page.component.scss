@@ -41,22 +41,9 @@
   display: flex;
 }
 
-.favorite-btn {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 0.7rem;
-  border-radius: 1rem;
+.favorite-btn-row {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
-}
-
-.favorite-svg {
-  width: 40px;
-  height: 40px;
-}
-
-.add-to-favorite-btn:hover {
-  background-color: rgba(255, 255, 255);
 }
 
 .col {

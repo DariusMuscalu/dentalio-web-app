@@ -20,12 +20,10 @@
             />
 
             <div class="col">
-              <div class="favorite-btn">
-                <img
-                  src="assets/nav/heart.svg"
-                  alt="heart icon"
-                  class="favorite-svg"
-                />
+              <div class="favorite-btn-row">
+                <app-favorite-button
+                  [isFavorite]="isFavorite(cabinetProfile?.id)"
+                ></app-favorite-button>
               </div>
 
               <div class="address-row">
