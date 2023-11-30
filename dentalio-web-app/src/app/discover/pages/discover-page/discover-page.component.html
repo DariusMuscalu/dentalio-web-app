@@ -1,9 +1,6 @@
 <app-header></app-header>
 <div class="grid-container">
   <ng-container *ngFor="let profile of cabinetProfiles$ | async">
-    <app-profile-card
-      [cabinetProfile]="profile"
-      (click)="onProfileCardClick(profile?.id)"
-    ></app-profile-card>
+    <app-profile-card [cabinetProfile]="profile"></app-profile-card>
   </ng-container>
 </div>

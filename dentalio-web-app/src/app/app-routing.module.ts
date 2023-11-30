@@ -31,6 +31,11 @@ const routes: Routes = [
         './cabinet-profiles/pages/cabinet-profile-details-page/cabinet-profile-details-page.module'
       ).then((m) => m.CabinetProfileDetailsPageModule),
   },
+  {
+    path: 'favorites',
+    loadChildren: () =>
+      import('./favorites/favorites.module').then((m) => m.FavoritesModule),
+  },
   // TODO Add wildcard route and pagenotfound component, see where you need to create it.
 ];
 

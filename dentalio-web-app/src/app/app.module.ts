@@ -20,6 +20,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { cabinetProfilesReducer } from './state/cabinet-profiles/cabinet-profiles.reducer';
 import { CabinetProfilesEffects } from './state/cabinet-profiles/cabinet-profiles.effects';
+import { FavoritesEffects } from './favorites/state/favorites.effects';
+import { favoritesReducer } from './favorites/state/favorites.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,8 +35,11 @@ import { CabinetProfilesEffects } from './state/cabinet-profiles/cabinet-profile
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    StoreModule.forRoot({ cabinetProfiles: cabinetProfilesReducer }),
-    EffectsModule.forRoot([CabinetProfilesEffects]),
+    StoreModule.forRoot({
+      cabinetProfiles: cabinetProfilesReducer,
+      favoriteCabinetProfiles: favoritesReducer,
+    }),
+    EffectsModule.forRoot([CabinetProfilesEffects, FavoritesEffects]),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
