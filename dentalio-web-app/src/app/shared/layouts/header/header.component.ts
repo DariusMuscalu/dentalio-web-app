@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from 'src/app/shared/layouts/navigation/navigation.service';
 import { AuthService } from '../../services/auth.service';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,7 +12,7 @@ export class HeaderComponent {
 
   constructor(
     private authService: AuthService,
-    private navigationService: NavigationService,
+    private navigationService: NavigationService
   ) {}
 
   toggleAuthModalVisibility() {

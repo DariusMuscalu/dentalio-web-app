@@ -36,6 +36,7 @@ const routes: Routes = [
     path: 'favorites',
     loadChildren: () =>
       import('./favorites/favorites.module').then((m) => m.FavoritesModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'appointments',
@@ -43,6 +44,7 @@ const routes: Routes = [
       import('./appointments/appointments.module').then(
         (m) => m.AppointmentsModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

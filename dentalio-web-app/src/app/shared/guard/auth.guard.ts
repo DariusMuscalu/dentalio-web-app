@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard {
   constructor(public authService: AuthService, public router: Router) {}
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
