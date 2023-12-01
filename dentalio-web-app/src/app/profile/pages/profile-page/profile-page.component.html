@@ -1,30 +1,35 @@
 <app-header></app-header>
+
 <div class="container-bg">
   <div class="container">
     <h2>Detalii cont</h2>
 
     <div class="label-with-input">
       <span class="label">Nume</span>
-      <input type="text" placeholder="Nume" />
+      <input
+        type="text"
+        placeholder="Nume"
+        [(ngModel)]="userData.displayName"
+      />
     </div>
 
     <div class="label-with-input">
       <span class="label">Prenume</span>
-      <input type="text" placeholder="Prenume" />
+      <input type="text" placeholder="Prenume" [(ngModel)]="userData.prenume" />
     </div>
 
     <div class="label-with-input">
       <span class="label">Telefon</span>
-      <input type="text" placeholder="Telefon" />
+      <input type="text" placeholder="Telefon" [(ngModel)]="userData.telefon" />
     </div>
 
     <div class="label-with-input">
       <span class="label">Email</span>
-      <input type="text" placeholder="Email" />
+      <input type="text" placeholder="Email" [(ngModel)]="userData.email" />
     </div>
 
     <button class="main-btn">Salveaza modificari</button>
 
-    <button class="red-text-btn">Stege contul</button>
+    <button class="red-text-btn">Sterge contul</button>
   </div>
 </div>
