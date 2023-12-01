@@ -23,6 +23,8 @@ import { CabinetProfilesEffects } from './cabinet-profiles/state/cabinet-profile
 import { FavoritesEffects } from './favorites/state/favorites.effects';
 import { favoritesReducer } from './favorites/state/favorites.reducer';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfileEffects } from './profile/state/profile.effects';
+import { profileReducer } from './profile/state/profile.reducer';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -39,8 +41,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     StoreModule.forRoot({
       cabinetProfiles: cabinetProfilesReducer,
       favoriteCabinetProfiles: favoritesReducer,
+      profile: profileReducer,
     }),
-    EffectsModule.forRoot([CabinetProfilesEffects, FavoritesEffects]),
+    EffectsModule.forRoot([
+      CabinetProfilesEffects,
+      FavoritesEffects,
+      ProfileEffects,
+    ]),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

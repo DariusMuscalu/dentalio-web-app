@@ -2,12 +2,10 @@ import { Injectable, NgZone } from '@angular/core';
 import { UserM } from './user.model';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { ProfileService } from 'src/app/profile/profile.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +20,8 @@ export class AuthService {
     public firestore: AngularFirestore,
     public auth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone,
+    private profileService: ProfileService
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -31,7 +30,7 @@ export class AuthService {
         this.userData = {
           uid: user.uid,
           email: user.email || '',
-          displayName: user.displayName || '',
+          name: user.displayName || '',
           photoURL: user.photoURL || '',
           emailVerified: user.emailVerified || false,
         };
@@ -43,6 +42,7 @@ export class AuthService {
     });
   }
 
+  // TODO Maybe this should be moved to a separate visibility service.
   toggleAuthModalVisibility() {
     this.isVisibleSubject.next(!this.isVisibleSubject.value);
   }
@@ -52,7 +52,6 @@ export class AuthService {
     return this.auth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user);
         this.auth.authState.subscribe((user) => {
           if (user) {
             this.router.navigate(['profile']);
@@ -72,7 +71,7 @@ export class AuthService {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.SendVerificationMail();
-        this.SetUserData(result.user);
+        this.profileService.createUserInDb(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -121,30 +120,11 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.router.navigate(['profile']);
-        this.SetUserData(result.user);
+        this.profileService.createUserInDb(result.user);
       })
       .catch((error) => {
         window.alert(error);
       });
-  }
-
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<UserM> = this.firestore.doc(
-      `Users/${user.uid}`
-    );
-    const userData: UserM = {
-      uid: user.uid,
-      email: user.email || '',
-      displayName: user.displayName || '',
-      photoURL: user.photoURL || '',
-      emailVerified: user.emailVerified || false,
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
   }
 
   // Sign out

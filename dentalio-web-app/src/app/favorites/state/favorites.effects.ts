@@ -27,9 +27,6 @@ export class FavoritesEffects {
           switchMap((userFavoritesIds: string[]) => {
             const fetchCabinetProfiles$ = userFavoritesIds.map((cabinetId) =>
               this.cabinetProfilesService.getCabinetProfileById(cabinetId).pipe(
-                tap((cabinetProfile: CabinetProfileM) => {
-                  console.log('Cabinet Profile Data:', cabinetProfile);
-                }),
                 catchError((error) => {
                   console.error('Error fetching Cabinet Profile:', error);
                   // Handle error for individual Cabinet Profile
@@ -39,15 +36,7 @@ export class FavoritesEffects {
               )
             );
 
-            console.log('Fetching Cabinet Profiles for IDs:', userFavoritesIds);
-
             return combineLatest(fetchCabinetProfiles$).pipe(
-              tap((favoriteCabinetProfiles: CabinetProfileM[]) => {
-                console.log(
-                  'Fetched Cabinet Profiles:',
-                  favoriteCabinetProfiles
-                );
-              }),
               map((favoriteCabinetProfiles: CabinetProfileM[]) =>
                 fetchFavoritesSuccess({
                   favoriteCabinetProfiles: favoriteCabinetProfiles.filter(

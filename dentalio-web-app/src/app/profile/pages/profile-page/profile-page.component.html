@@ -4,31 +4,33 @@
   <div class="container">
     <h2>Detalii cont</h2>
 
-    <div class="label-with-input">
-      <span class="label">Nume</span>
-      <input
-        type="text"
-        placeholder="Nume"
-        [(ngModel)]="userData.displayName"
-      />
-    </div>
+    <!-- Loading Indicator -->
+    <div *ngIf="isPending$ | async">Loading...</div>
+
+    <!-- Error Message -->
+    <div *ngIf="error$ | async as error">{{ error }}</div>
+
+    <!-- Pending -->
+    <div *ngIf="isPending$ | async">Pending</div>
 
     <div class="label-with-input">
-      <span class="label">Prenume</span>
-      <input type="text" placeholder="Prenume" [(ngModel)]="userData.prenume" />
+      <span class="label">Nume</span>
+      <input type="text" placeholder="Nume" [(ngModel)]="user.name" />
     </div>
 
     <div class="label-with-input">
       <span class="label">Telefon</span>
-      <input type="text" placeholder="Telefon" [(ngModel)]="userData.telefon" />
+      <input type="text" placeholder="Telefon" [(ngModel)]="user.phoneNumber" />
     </div>
 
     <div class="label-with-input">
       <span class="label">Email</span>
-      <input type="text" placeholder="Email" [(ngModel)]="userData.email" />
+      <input type="text" placeholder="Email" [(ngModel)]="user.email" />
     </div>
 
-    <button class="main-btn">Salveaza modificari</button>
+    <button class="main-btn" (click)="onSaveChanges()">
+      Salveaza modificari
+    </button>
 
     <button class="red-text-btn">Sterge contul</button>
   </div>
