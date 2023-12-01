@@ -14,22 +14,44 @@ export const selectError = createSelector(
   (state: ProfileState) => state.error
 );
 
-export const selectStatus = createSelector(
+// Selectors for Fetching User Data
+export const selectFetchStatus = createSelector(
   selectProfileState,
-  (state: ProfileState) => state.status
+  (state: ProfileState) => state.fetchStatus
 );
 
-export const selectIsPending = createSelector(
-  selectStatus,
+export const selectIsFetchPending = createSelector(
+  selectFetchStatus,
   (status) => status === 'pending'
 );
 
-export const selectIsLoading = createSelector(
-  selectStatus,
+export const selectIsFetchLoading = createSelector(
+  selectFetchStatus,
   (status) => status === 'loading'
 );
 
-export const selectIsSuccess = createSelector(
-  selectStatus,
+export const selectIsFetchSuccess = createSelector(
+  selectFetchStatus,
+  (status) => status === 'success'
+);
+
+// Selectors for Updating User Data
+export const selectUpdateStatus = createSelector(
+  selectProfileState,
+  (state: ProfileState) => state.updateStatus
+);
+
+export const selectIsUpdatePending = createSelector(
+  selectUpdateStatus,
+  (status) => status === 'pending'
+);
+
+export const selectIsUpdateLoading = createSelector(
+  selectUpdateStatus,
+  (status) => status === 'loading'
+);
+
+export const selectIsUpdateSuccess = createSelector(
+  selectUpdateStatus,
   (status) => status === 'success'
 );

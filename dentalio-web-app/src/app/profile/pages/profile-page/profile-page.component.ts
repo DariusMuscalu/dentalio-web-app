@@ -6,9 +6,10 @@ import { fetchUserData, updateUserData } from '../../state/profile.actions';
 import {
   selectUser,
   selectError,
-  selectIsPending,
-  selectIsSuccess,
+  selectIsFetchPending,
+  selectIsUpdateSuccess,
 } from '../../state/profile.selectors';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-profile-page',
@@ -18,13 +19,13 @@ import {
 export class ProfilePageComponent implements OnInit {
   userData$ = this.store.select(selectUser);
   error$ = this.store.select(selectError);
-  isPending$ = this.store.select(selectIsPending);
-  isSuccess$ = this.store.select(selectIsSuccess);
+  isFetchPending$ = this.store.select(selectIsFetchPending);
+  isSuccess$ = this.store.select(selectIsUpdateSuccess);
 
   // Used to update user data. It is being set from input fields in the template.
   user: UserM = {};
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private toast: NgToastService) {}
 
   ngOnInit(): void {
     this.store.dispatch(fetchUserData());
@@ -35,30 +36,33 @@ export class ProfilePageComponent implements OnInit {
         this.user = { ...userData }; // Use spread operator to avoid modifying the original object
       }
     });
+
+    // Subscribe to isSuccess$ to show a success toast when the user data is updated
+    this.isSuccess$.subscribe((isSuccess) => {
+      if (isSuccess) {
+        this.toast.success({
+          detail: 'Modificarile au fost salvate!',
+          summary: 'Success',
+          duration: 2000,
+          position: 'bottomRight',
+        });
+      }
+    });
+
+    // Subscribe to error$ to show an error toast when there's an error
+    this.error$.subscribe((error) => {
+      if (error) {
+        this.toast.error({
+          detail: `Error: ${error}`,
+          summary: 'Error',
+          sticky: true,
+          position: 'bottomRight',
+        });
+      }
+    });
   }
 
   onSaveChanges() {
     this.store.dispatch(updateUserData({ newUserData: this.user }));
-  }
-
-  // DEBUGGING PURPOSES: Add this method to log user data and status
-  logUserDataAndStatus(): void {
-    // Log user data
-    this.userData$.subscribe((userData) => {
-      console.log('User data:', userData);
-    });
-
-    // Log status
-    this.isPending$.subscribe((isPending) => {
-      console.log('Is Pending:', isPending);
-    });
-
-    this.isSuccess$.subscribe((isSuccess) => {
-      console.log('Is Success:', isSuccess);
-    });
-
-    this.error$.subscribe((error) => {
-      console.log('Error:', error);
-    });
   }
 }

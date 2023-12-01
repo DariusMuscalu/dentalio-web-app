@@ -5,13 +5,13 @@
     <h2>Detalii cont</h2>
 
     <!-- Loading Indicator -->
-    <div *ngIf="isPending$ | async">Loading...</div>
+    <div *ngIf="isFetchPending$ | async">Loading...</div>
 
     <!-- Error Message -->
     <div *ngIf="error$ | async as error">{{ error }}</div>
 
     <!-- Pending -->
-    <div *ngIf="isPending$ | async">Pending</div>
+    <div *ngIf="isFetchPending$ | async">Pending</div>
 
     <div class="label-with-input">
       <span class="label">Nume</span>

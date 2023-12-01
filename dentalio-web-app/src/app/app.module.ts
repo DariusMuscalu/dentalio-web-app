@@ -25,6 +25,7 @@ import { favoritesReducer } from './favorites/state/favorites.reducer';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileEffects } from './profile/state/profile.effects';
 import { profileReducer } from './profile/state/profile.reducer';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -38,6 +39,7 @@ import { profileReducer } from './profile/state/profile.reducer';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    NgToastModule,
     StoreModule.forRoot({
       cabinetProfiles: cabinetProfilesReducer,
       favoriteCabinetProfiles: favoritesReducer,
