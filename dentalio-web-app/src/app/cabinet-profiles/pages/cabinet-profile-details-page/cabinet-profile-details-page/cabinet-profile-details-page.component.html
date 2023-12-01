@@ -101,18 +101,27 @@
         <div class="content-card">
           <span class="content-card-title">Galerie</span>
 
-          <div class="gallery">
+          <ngx-slick-carousel
+            class="carousel"
+            #slickModal="slick-carousel"
+            [config]="slideConfig"
+            (init)="slickInit($event)"
+            (breakpoint)="breakpoint($event)"
+            (afterChange)="afterChange($event)"
+            (beforeChange)="beforeChange($event)"
+          >
             <div
-              class="gallery-image"
+              ngxSlickItem
               *ngFor="let galleryImage of cabinetProfile?.gallery"
+              class="slide"
             >
               <img
                 [src]="galleryImage.imageUrl"
-                alt="gallery image"
+                alt=" gallery image"
                 class="gallery-image"
               />
             </div>
-          </div>
+          </ngx-slick-carousel>
         </div>
 
         <div class="content-card">

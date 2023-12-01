@@ -4,6 +4,7 @@ import { CabinetProfileDetailsPageComponent } from './cabinet-profile-details-pa
 import { CabinetProfileDetailsPageRoutingModule } from './cabinet-profile-details-page-routing.module';
 import { CabinetProfilesModule } from '../../cabinet-profiles.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [CabinetProfileDetailsPageComponent],
   imports: [
@@ -11,6 +12,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CabinetProfileDetailsPageRoutingModule,
     CabinetProfilesModule,
     SharedModule,
+    SlickCarouselModule,
   ],
 })
 export class CabinetProfileDetailsPageModule {}
