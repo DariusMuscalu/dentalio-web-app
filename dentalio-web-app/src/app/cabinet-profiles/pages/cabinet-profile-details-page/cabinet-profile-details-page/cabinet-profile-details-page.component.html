@@ -139,27 +139,11 @@
                         i < review.numOfStars ? 'star' : 'empty-star'
                       }}.svg"
                       alt="star svg"
-                      class="star-svg"
                     />
                   </ng-container>
                 </div>
                 <p>{{ review.description }}</p>
               </div>
-            </div>
-
-            <!-- Remove after adjusting the layout -->
-            <div
-              class="review-card"
-              *ngFor="let review of cabinetProfile?.reviews"
-            >
-              <img
-                [src]="review.reviewerAvatarUrl"
-                alt="Review Avatar"
-                class="avatar-img"
-              />
-              <p>{{ review.reviewerName }}</p>
-              <p>{{ review.description }}</p>
-              <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
             </div>
           </div>
         </div>

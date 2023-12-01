@@ -182,6 +182,8 @@
   display: grid;
   grid-template-columns: 45% 45%;
   grid-column-gap: 10%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .review-card {
@@ -195,20 +197,17 @@
 .review-details-col {
   display: flex;
   flex-direction: column;
+  padding: 0 1.5rem;
 }
 
 .reviewer-name {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .stars-row {
   display: flex;
-}
-
-.star-svg {
-  height: 45px;
-  width: 45px;
+  margin: .7rem 0;
 }
 
 .avatar-img {
