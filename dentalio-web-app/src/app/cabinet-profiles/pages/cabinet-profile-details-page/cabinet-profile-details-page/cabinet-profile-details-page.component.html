@@ -9,8 +9,6 @@
   <ng-container *ngIf="status$ | async as status">
     <ng-container *ngIf="status === 'success'; else loadingOrError">
       <ng-container *ngIf="selectedCabinetProfile$ | async as cabinetProfile">
-        <h2 class="cabinet-name">{{ cabinetProfile?.name }}</h2>
-
         <div class="content-card">
           <div class="header">
             <img
@@ -21,6 +19,7 @@
 
             <div class="col">
               <div class="favorite-btn-row">
+                <h2 class="cabinet-name">{{ cabinetProfile?.name }}</h2>
                 <app-favorite-button
                   [isFavorite]="isFavorite(cabinetProfile?.id)"
                 ></app-favorite-button>
