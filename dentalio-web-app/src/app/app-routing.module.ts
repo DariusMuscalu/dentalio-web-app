@@ -38,6 +38,13 @@ const routes: Routes = [
       import('./favorites/favorites.module').then((m) => m.FavoritesModule),
   },
   {
+    path: 'appointments',
+    loadChildren: () =>
+      import('./appointments/appointments.module').then(
+        (m) => m.AppointmentsModule
+      ),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },
