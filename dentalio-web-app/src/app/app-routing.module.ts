@@ -47,6 +47,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'notifications',
+    loadChildren: () =>
+      import('./notifications/notifications.module').then(
+        (m) => m.NotificationsModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },
