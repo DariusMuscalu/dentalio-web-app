@@ -1,11 +1,11 @@
 import { Injectable, NgZone } from '@angular/core';
 import { UserM } from './user.model';
-import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from 'src/app/profile/profile.service';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -105,13 +105,27 @@ export class AuthService {
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
-  // TODO Google sign in is not working for the moment. I have to understand the API in order to make changes.
-
   // Sign in with Google
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['profile']);
-    });
+    return this.auth
+      .signInWithPopup(new GoogleAuthProvider())
+      .then((res: any) => {
+        // Check if the user is authenticated
+        if (res.user) {
+          // Create the user in the database
+          this.profileService.createUserInDb(res.user);
+
+          // Navigate to the profile page
+          this.router.navigate(['profile']);
+        } else {
+          // Handle the case where the user is not available
+          window.alert('Google authentication failed.');
+        }
+      })
+      .catch((error) => {
+        // Handle authentication errors
+        window.alert(error.message);
+      });
   }
 
   // Auth logic to run auth providers

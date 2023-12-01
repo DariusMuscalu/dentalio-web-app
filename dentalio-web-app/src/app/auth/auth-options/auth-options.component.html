@@ -13,15 +13,7 @@
     <p>Autentifica-te pentru a putea face programari</p>
   </div>
 
-  <div class="auth-option-btn">
-    <!-- <div class="formGroup">
-      <input
-        type="button"
-        class="btn btnPrimary"
-        value="Sign Up With Google"
-        (click)="authService.GoogleAuth()"
-      />
-    </div> -->
+  <div class="auth-option-btn" (click)="authService.GoogleAuth()">
     <img
       src="/assets/google.svg"
       alt="auth option logo"
