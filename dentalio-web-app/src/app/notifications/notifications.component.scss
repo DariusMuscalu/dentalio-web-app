@@ -1,0 +1,16 @@
+.container-bg {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1600px;
+  min-width: 800px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

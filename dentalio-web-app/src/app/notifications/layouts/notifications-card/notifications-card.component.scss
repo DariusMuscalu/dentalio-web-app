@@ -1,0 +1,33 @@
+.container {
+  border: 1px solid #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  cursor: pointer;
+}
+
+.container:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.body {
+  margin-bottom: 0.2rem;
+}
+
+.right-arrow {
+  margin-left: auto;
+}
