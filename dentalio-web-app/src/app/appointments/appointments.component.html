@@ -1,16 +1,41 @@
 <app-header></app-header>
 <div class="container-bg">
-  <div class="container">
-    <h2>Programari</h2>
-
-    <span>Urmatoarea programare</span>
-
-    <div class="main-btn" routerLink="/discover">Programeaza-te acum!</div>
+  <div class="column">
+    <div class="side-menu-container">
+      <span class="hint-text">Programeaza-te mai usor din aplicatie</span>
+      <img
+        src="assets/app-stores/google.png"
+        alt="google app store"
+        class="appstore-img"
+      />
+      <img
+        src="assets/app-stores/appstore.png"
+        alt="iphone app store"
+        class="appstore-img"
+      />
+      <img
+        src="assets/app-stores/huawei.png"
+        alt="huawei app store"
+        class="appstore-img"
+      />
+    </div>
   </div>
 
-  <div class="container">
-    <span>In trecut</span>
+  <div class="column">
+    <div class="container">
+      <h2>Programari</h2>
 
-    <app-appointment-card></app-appointment-card>
+      <span class="appointment-time-status">Urmatoarea programare</span>
+
+      <button class="main-btn" routerLink="/discover">
+        Programeaza-te acum!
+      </button>
+    </div>
+
+    <div class="container">
+      <span class="appointment-time-status">In trecut</span>
+
+      <app-appointment-card></app-appointment-card>
+    </div>
   </div>
 </div>

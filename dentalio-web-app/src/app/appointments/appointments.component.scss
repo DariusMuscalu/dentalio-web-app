@@ -1,8 +1,6 @@
 .container-bg {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .container {
@@ -14,4 +12,41 @@
   border-radius: 1rem;
   margin: 2rem 0;
   padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  min-width: 100%;
+  margin: 2rem 0;
+}
+
+.appointment-time-status {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+.side-menu-container {
+  margin-right: 2rem;
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appstore-img {
+  margin: 1rem;
+  width: 200px;
+  object-fit: contain;
+  height: 80px;
+  cursor: pointer;
+}
+
+.hint-text {
+  padding: 1.3rem;
+  font-weight: bold;
 }
