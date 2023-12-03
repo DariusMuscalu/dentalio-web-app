@@ -2,7 +2,8 @@ import { createAction, props } from '@ngrx/store';
 import { CabinetProfileM } from 'src/app/cabinet-profiles/models/cabinet-profile.model';
 
 export const fetchCabinetProfiles = createAction(
-  '[Discover Page] Fetch Cabinet Profiles'
+  '[Discover Page] Fetch Cabinet Profiles',
+  props<{ service?: string; location?: string }>()
 );
 
 export const fetchCabinetProfilesSuccess = createAction(

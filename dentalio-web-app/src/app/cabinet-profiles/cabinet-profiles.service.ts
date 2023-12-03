@@ -5,7 +5,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { map, switchMap, catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, forkJoin, of } from 'rxjs';
 import { CabinetProfileM } from './models/cabinet-profile.model';
 import { StaffMemberM } from './models/staff-member.model';
 import { ServiceM } from './models/service.model';
@@ -22,36 +22,37 @@ export class CabinetProfilesService {
       firestore.collection<CabinetProfileM>('CabinetProfiles');
   }
 
-  public getCabinetProfilesFiltered(
+  public getCabinetProfiles(
     service?: string,
     location?: string
   ): Observable<CabinetProfileM[]> {
-    return this.getCabinetProfiles().pipe(
-      map((cabinetProfiles) =>
-        cabinetProfiles.filter((profile) => {
-          // If service is specified, filter the list based on service
-          if (service && !this.containsService(profile, service)) {
-            return false;
-          }
-
-          // If location is specified, filter the list based on location
-          if (location && !this.containsLocation(profile, location)) {
-            return false;
-          }
-
-          return true;
-        })
-      )
-    );
-  }
-
-  public getCabinetProfiles(): Observable<CabinetProfileM[]> {
     return this.cabinetProfilesCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => ({
           id: a.payload.doc.id,
           ...(a.payload.doc.data() as CabinetProfileM),
         }))
+      ),
+      switchMap((cabinetProfiles) =>
+        // Fetch services for each profile
+        forkJoin(
+          cabinetProfiles.map((profile) =>
+            this.extractAndSetServices(
+              this.cabinetProfilesCollection.doc(profile.id)
+            ).pipe(
+              map((services) => {
+                profile.services = services;
+                return profile;
+              })
+            )
+          )
+        )
+      ),
+      // Filter by service and location
+      map((profiles) =>
+        profiles.filter((profile) =>
+          this.filterProfile(profile, service, location)
+        )
       )
     );
   }
@@ -116,6 +117,22 @@ export class CabinetProfilesService {
 
   // === PRIVATE ===
 
+  private filterProfile(
+    profile: CabinetProfileM,
+    service?: string,
+    location?: string
+  ): boolean {
+    if (service && !this.containsService(profile, service)) {
+      return false;
+    }
+
+    if (location && !this.containsLocation(profile, location)) {
+      return false;
+    }
+
+    return true;
+  }
+
   private containsService(profile: CabinetProfileM, service: string): boolean {
     // Implement logic to check if the profile contains the specified service
     return (
@@ -129,12 +146,17 @@ export class CabinetProfilesService {
     profile: CabinetProfileM,
     location: string
   ): boolean {
-    // Implement logic to check if the profile contains the specified location
-    return (
-      profile.address.county &&
-      profile.address.county.trim().toLowerCase() ===
-        location.trim().toLowerCase()
-    );
+    const removeDiacritics = (str: string): string => {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    };
+
+    const profileCounty = profile.address.county
+      ? removeDiacritics(profile.address.county.trim().toLowerCase())
+      : '';
+
+    const targetLocation = removeDiacritics(location.trim().toLowerCase());
+
+    return profileCounty === targetLocation;
   }
 
   private extractAndSetStaff(

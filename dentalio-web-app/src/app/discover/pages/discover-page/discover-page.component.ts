@@ -15,6 +15,6 @@ export class DiscoverPageComponent {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.dispatch(fetchCabinetProfiles());
+    this.store.dispatch(fetchCabinetProfiles({ service: 'Detartraj', location: 'Bucuresti' }));
   }
 }

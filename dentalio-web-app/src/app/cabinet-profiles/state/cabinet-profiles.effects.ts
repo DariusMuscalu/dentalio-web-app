@@ -21,15 +21,19 @@ export class CabinetProfilesEffects {
   fetchCabinetProfiles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchCabinetProfiles),
-      switchMap(() =>
-        from(this.cabinetProfilesService.getCabinetProfiles()).pipe(
+      switchMap((action) => {
+        const { service, location } = action;
+
+        return from(
+          this.cabinetProfilesService.getCabinetProfiles(service, location)
+        ).pipe(
           map((cabinetProfiles) =>
             fetchCabinetProfilesSuccess({ cabinetProfiles: cabinetProfiles })
           ),
           // If errors return a new failure action
           catchError((error) => of(fetchCabinetProfilesFailure({ error })))
-        )
-      )
+        );
+      })
     )
   );
 
