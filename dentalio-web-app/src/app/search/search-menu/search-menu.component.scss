@@ -15,6 +15,12 @@
 
 input {
   border: none;
+  min-width: 350px;
+}
+
+button {
+  min-width: 100%;
+  margin: 0;
 }
 
 .input-container {
