@@ -54,6 +54,7 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard],
   },
+  { path: 'calendar', loadChildren: () => import('./calendar/calendar.module').then(m => m.CalendarModule) },
   {
     path: '**',
     component: PageNotFoundComponent,
