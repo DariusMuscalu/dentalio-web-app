@@ -22,6 +22,29 @@ export class CabinetProfilesService {
       firestore.collection<CabinetProfileM>('CabinetProfiles');
   }
 
+  public getCabinetProfilesFiltered(
+    service?: string,
+    location?: string
+  ): Observable<CabinetProfileM[]> {
+    return this.getCabinetProfiles().pipe(
+      map((cabinetProfiles) =>
+        cabinetProfiles.filter((profile) => {
+          // If service is specified, filter the list based on service
+          if (service && !this.containsService(profile, service)) {
+            return false;
+          }
+
+          // If location is specified, filter the list based on location
+          if (location && !this.containsLocation(profile, location)) {
+            return false;
+          }
+
+          return true;
+        })
+      )
+    );
+  }
+
   public getCabinetProfiles(): Observable<CabinetProfileM[]> {
     return this.cabinetProfilesCollection.snapshotChanges().pipe(
       map((actions) =>
@@ -88,6 +111,29 @@ export class CabinetProfilesService {
         console.error('Error fetching profile:', error);
         return of(undefined);
       })
+    );
+  }
+
+  // === PRIVATE ===
+
+  private containsService(profile: CabinetProfileM, service: string): boolean {
+    // Implement logic to check if the profile contains the specified service
+    return (
+      profile.services?.some(
+        (s) => s.name.trim().toLowerCase() === service.trim().toLowerCase()
+      ) ?? false
+    );
+  }
+
+  private containsLocation(
+    profile: CabinetProfileM,
+    location: string
+  ): boolean {
+    // Implement logic to check if the profile contains the specified location
+    return (
+      profile.address.county &&
+      profile.address.county.trim().toLowerCase() ===
+        location.trim().toLowerCase()
     );
   }
 
