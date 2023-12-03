@@ -17,3 +17,8 @@ export const selectCabinetProfileByIdStatus = createSelector(
   selectCabinetProfiles,
   (state) => state.status
 );
+
+export const selectCabinetProfilesStatus = createSelector(
+  selectCabinetProfiles,
+  (state: CabinetProfilesState) => state.status
+);

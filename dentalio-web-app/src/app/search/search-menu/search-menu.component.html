@@ -3,29 +3,47 @@
     <h1>DENTALIO</h1>
   </div>
   <span class="hint">Gaseste dentistul potrivit nevoilor tale</span>
+
+  <!-- Location input -->
   <div class="input-container">
     <img
       src="assets/search-menu/location.svg"
       alt="location svg"
       class="input-suffix-icon"
     />
-    <input type="text" placeholder="Alege locatie" />
+    <input
+      type="text"
+      placeholder="Alege locatie"
+      [(ngModel)]="selectedLocation"
+    />
   </div>
+
+  <!-- Service input -->
   <div class="input-container">
     <img
       src="assets/search-menu/search-loop.svg"
       alt="location svg"
       class="input-suffix-icon"
     />
-    <input type="text" placeholder="Serviciul dorit" />
+    <input
+      type="text"
+      placeholder="Serviciul dorit"
+      [(ngModel)]="selectedService"
+    />
   </div>
+
+  <!-- Anytime input (optional, adjust as needed) -->
   <div class="input-container">
     <img
       src="assets/search-menu/calendar.svg"
       alt="location svg"
       class="input-suffix-icon"
     />
-    <input type="text" placeholder="Oricand" />
+    <input type="text" placeholder="Oricand" [(ngModel)]="selectedAnytime" />
   </div>
-  <button class="main-btn">Descopera cabinete in apropiere</button>
+
+  <!-- Discover button -->
+  <button class="main-btn" (click)="onDiscoverClick()">
+    Descopera cabinete in apropiere
+  </button>
 </div>
