@@ -4,43 +4,53 @@
   </div>
   <span class="hint">Gaseste dentistul potrivit nevoilor tale</span>
 
-  <!-- Location input -->
-  <div class="input-container">
-    <img
-      src="assets/search-menu/location.svg"
-      alt="location svg"
-      class="input-suffix-icon"
-    />
-    <input
-      type="text"
+  <!-- LOCATION -->
+  <div class="ng-autocomplete">
+    <ng-autocomplete
+      [suffixIconUrl]="'assets/search-menu/location.svg'"
+      [data]="locations"
+      [searchKeyword]="keyword"
       placeholder="Alege locatie"
-      [(ngModel)]="selectedLocation"
-    />
+      (selected)="onLocationSelected($event)"
+      (inputChanged)="onChangeSearch($event)"
+      (inputFocused)="onFocused($event)"
+      [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate"
+    >
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
   </div>
 
-  <!-- Service input -->
-  <div class="input-container">
-    <img
-      src="assets/search-menu/search-loop.svg"
-      alt="location svg"
-      class="input-suffix-icon"
-    />
-    <input
-      type="text"
-      placeholder="Serviciul dorit"
-      [(ngModel)]="selectedService"
-    />
-  </div>
+  <!-- SERVICE -->
+  <div class="ng-autocomplete">
+    <ng-autocomplete
+      [suffixIconUrl]="'./assets/search-menu/search-loop.svg'"
+      [data]="services"
+      [searchKeyword]="keyword"
+      placeholder="Alege serviciu"
+      (selected)="onServiceSelected($event)"
+      (inputChanged)="onChangeSearch($event)"
+      (inputFocused)="onFocused($event)"
+      [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate"
+    >
+    </ng-autocomplete>
 
-  <!-- Calendar input (TO BE ADDED AFTER MVP, adjust as needed) -->
-  <!-- <div class="input-container">
-    <img
-      src="assets/search-menu/calendar.svg"
-      alt="location svg"
-      class="input-suffix-icon"
-    />
-    <input type="text" placeholder="Oricand" [(ngModel)]="selectedAnytime" />
-  </div> -->
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
 
   <!-- Discover button -->
   <button class="main-btn" (click)="onDiscoverClick()">
