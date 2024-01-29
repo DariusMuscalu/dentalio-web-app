@@ -1,6 +1,20 @@
 <app-header></app-header>
+
 <div class="grid-container">
-  <ng-container *ngFor="let profile of cabinetProfiles$ | async">
-    <app-profile-card [cabinetProfile]="profile"></app-profile-card>
+  <ng-container
+    *ngIf="cabinetProfiles$ | async as cabinetProfiles; else noProfiles"
+  >
+    <!-- Check if cabinetProfiles is not empty -->
+    <ng-container *ngIf="cabinetProfiles.length > 0; else noProfiles">
+      <app-profile-card
+        *ngFor="let profile of cabinetProfiles"
+        [cabinetProfile]="profile"
+      ></app-profile-card>
+    </ng-container>
   </ng-container>
 </div>
+
+<ng-template #noProfiles>
+  <!-- Display this text if cabinetProfiles is empty -->
+  <p>Nu exista serviciul cautat, in locatia respectiva</p>
+</ng-template>
