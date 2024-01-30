@@ -6,9 +6,15 @@ import { CabinetProfilesService } from 'src/app/cabinet-profiles/cabinet-profile
 import { Observable, combineLatest, forkJoin, from, of } from 'rxjs';
 import { CabinetProfileM } from 'src/app/cabinet-profiles/models/cabinet-profile.model';
 import {
+  addFavorite,
+  addFavoriteFailure,
+  addFavoriteSuccess,
   fetchFavorites,
   fetchFavoritesFailure,
   fetchFavoritesSuccess,
+  removeFavorite,
+  removeFavoriteFailure,
+  removeFavoriteSuccess,
 } from './favorites.actions';
 
 @Injectable()
@@ -30,7 +36,6 @@ export class FavoritesEffects {
                 catchError((error) => {
                   console.error('Error fetching Cabinet Profile:', error);
                   // Handle error for individual Cabinet Profile
-                  // You can decide whether to return a default profile or throw an error
                   return of(null);
                 })
               )
@@ -50,6 +55,30 @@ export class FavoritesEffects {
               })
             );
           })
+        )
+      )
+    )
+  );
+
+  addFavorite$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addFavorite),
+      switchMap(({ profileId }) =>
+        this.favoritesService.addToFavorites(profileId).pipe(
+          map(() => addFavoriteSuccess({ profileId })),
+          catchError((error) => of(addFavoriteFailure({ error })))
+        )
+      )
+    )
+  );
+
+  removeFavorite$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(removeFavorite),
+      switchMap(({ profileId }) =>
+        this.favoritesService.removeFromFavorites(profileId).pipe(
+          map(() => removeFavoriteSuccess({ profileId })),
+          catchError((error) => of(removeFavoriteFailure({ error })))
         )
       )
     )

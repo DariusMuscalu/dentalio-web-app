@@ -14,6 +14,7 @@
       <app-favorite-button
         [isFavorite]="isFavorite(cabinetProfile?.id)"
         class="favorite-btn"
+        (click)="onFavoriteBtnClick($event, cabinetProfile?.id)"
       ></app-favorite-button>
     </div>
 

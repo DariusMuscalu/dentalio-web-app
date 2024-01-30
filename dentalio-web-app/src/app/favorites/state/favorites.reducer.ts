@@ -1,9 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import { CabinetProfileM } from 'src/app/cabinet-profiles/models/cabinet-profile.model';
 import {
+  addFavorite,
+  addFavoriteFailure,
+  addFavoriteSuccess,
   fetchFavorites,
   fetchFavoritesFailure,
   fetchFavoritesSuccess,
+  removeFavorite,
+  removeFavoriteFailure,
+  removeFavoriteSuccess,
 } from './favorites.actions';
 
 export interface FavoritesState {
@@ -49,6 +55,59 @@ export const favoritesReducer = createReducer(
   on(fetchFavoritesFailure, (state, { error }) => ({
     ...state,
     error: error,
+    status: <const>'error',
+  })),
+
+  on(addFavorite, (state, { profileId }) => {
+    // Add the profileId to the list of favorites
+    const favoriteCabinetProfilesIds = [
+      ...state.favoriteCabinetProfilesIds,
+      profileId,
+    ];
+
+    return {
+      ...state,
+      favoriteCabinetProfilesIds,
+      status: <const>'loading', // You may want to set this to 'loading' or 'pending' depending on your UI needs
+    };
+  }),
+
+  on(addFavoriteSuccess, (state, { profileId }) => {
+    return {
+      ...state,
+      status: <const>'success',
+    };
+  }),
+
+  on(addFavoriteFailure, (state, { error }) => ({
+    ...state,
+    error,
+    status: <const>'error',
+  })),
+
+  on(removeFavorite, (state, { profileId }) => {
+    // Remove the profileId from the list of favorites
+    const favoriteCabinetProfilesIds = state.favoriteCabinetProfilesIds.filter(
+      (id) => id !== profileId
+    );
+
+    return {
+      ...state,
+      favoriteCabinetProfilesIds,
+      status: <const>'loading', // You may want to set this to 'loading' or 'pending' depending on your UI needs
+    };
+  }),
+
+  on(removeFavoriteSuccess, (state, { profileId }) => {
+    return {
+      ...state,
+      status: <const>'success',
+    };
+  }),
+
+  on(removeFavoriteFailure, (state, { error }) => ({
+    ...state,
+    error,
     status: <const>'error',
   }))
 );

@@ -13,4 +13,32 @@ export const fetchFavoritesFailure = createAction(
   props<{ error: string }>()
 );
 
-// TODO Add the addCabinetProfileToFavorites and removeCabinetProfileFromFavorites
+export const addFavorite = createAction(
+  '[Favorites] Add Cabinet Profile to Favorites',
+  props<{ profileId: string }>()
+);
+
+export const addFavoriteSuccess = createAction(
+  '[Favorites] Add Cabinet Profile to Favorites Success',
+  props<{ profileId: string }>()
+);
+
+export const addFavoriteFailure = createAction(
+  '[Favorites] Add Cabinet Profile to Favorites Failure',
+  props<{ error: string }>()
+);
+
+export const removeFavorite = createAction(
+  '[Favorites] Remove Cabinet Profile from Favorites',
+  props<{ profileId: string }>()
+);
+
+export const removeFavoriteSuccess = createAction(
+  '[Favorites] Remove Cabinet Profile from Favorites Success',
+  props<{ profileId: string }>()
+);
+
+export const removeFavoriteFailure = createAction(
+  '[Favorites] Remove Cabinet Profile from Favorites Failure',
+  props<{ error: string }>()
+);
