@@ -9,6 +9,10 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class AuthOptionsComponent {
   constructor(public authService: AuthService) {}
 
+  signWithGoogle() {
+    this.authService.GoogleAuth();
+  }
+
   toggleAuthModalVisibility() {
     this.authService.toggleAuthModalVisibility();
   }
