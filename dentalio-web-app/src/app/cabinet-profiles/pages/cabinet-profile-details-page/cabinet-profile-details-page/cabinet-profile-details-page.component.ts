@@ -11,6 +11,7 @@ import {
   selectCabinetProfileByIdStatus,
 } from 'src/app/cabinet-profiles/state/cabinet-profiles.selectors';
 import { selectFavoriteIds } from 'src/app/favorites/state/favorites.selectors';
+import { addFavorite, removeFavorite } from 'src/app/favorites/state/favorites.actions';
 
 @Component({
   selector: 'app-cabinet-profile-details-page',
@@ -42,6 +43,13 @@ export class CabinetProfileDetailsPageComponent implements OnInit, OnDestroy {
         // Access the selected cabinet data
         console.log('Selected Cabinet Data:', cabinet);
       });
+  }
+
+  onFavoriteBtnClick(event: Event, profileId: string) {
+    event.stopPropagation(); // Stop the propagation of the click event, so that the onProfileCardClick() does not get triggered.
+    this.isFavorite(profileId)
+      ? this.store.dispatch(removeFavorite({ profileId }))
+      : this.store.dispatch(addFavorite({ profileId }));
   }
 
   isFavorite(cabinetId: string): boolean {
