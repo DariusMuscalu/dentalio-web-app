@@ -19,10 +19,15 @@
     </div>
 
     <p class="address">{{ cabinetProfile?.address.address }}</p>
-    <div class="review-row">
+    <div *ngIf="cabinetProfile?.reviews; else noReviews" class="review-row">
       <img src="assets/star.svg" alt="star icon" />
+      <!-- TODO Remove hardcoded value, create method to calculate the rating -->
       <span class="rating">5.0</span>
       <span>{{ cabinetProfile?.numOfReviews }} Recenzii</span>
     </div>
+
+    <ng-template #noReviews>
+      <div class="no-reviews-message">Nu exista recenzii inca</div>
+    </ng-template>
   </div>
 </div>
