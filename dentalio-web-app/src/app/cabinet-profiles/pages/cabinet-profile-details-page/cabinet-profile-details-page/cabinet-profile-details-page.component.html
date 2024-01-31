@@ -37,11 +37,12 @@
                 </p>
               </div>
 
-              <div class="reviews-row">
+              <div *ngIf="cabinetProfile?.reviews" class="reviews-row">
                 <img src="assets/star.svg" alt="star svg" />
+                <!-- TODO Remove hardcoded value and create a method to calculate the -->
                 <span class="rating">4.7 </span>
                 <span class="num-of-reviews"
-                  >{{ cabinetProfile?.reviews.length }} Recenzii</span
+                  >{{ cabinetProfile?.reviews?.length }} Recenzii</span
                 >
               </div>
 
@@ -92,7 +93,9 @@
                 <span>{{ service.price }} Lei</span>
               </div>
 
-              <div class="reserve-btn main-btn" routerLink="/calendar">Rezerva</div>
+              <div class="reserve-btn main-btn" routerLink="/calendar">
+                Rezerva
+              </div>
             </div>
           </div>
         </div>
@@ -123,7 +126,7 @@
           </ngx-slick-carousel>
         </div>
 
-        <div class="content-card">
+        <div *ngIf="cabinetProfile?.reviews" class="content-card">
           <span class="content-card-title">Recenzii</span>
 
           <div class="review-cards-grid">
