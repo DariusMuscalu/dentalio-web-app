@@ -39,7 +39,10 @@
                 </p>
               </div>
 
-              <div *ngIf="cabinetProfile?.reviews" class="reviews-row">
+              <div
+                *ngIf="cabinetProfile?.reviews; else noReviews"
+                class="reviews-row"
+              >
                 <img src="assets/star.svg" alt="star svg" />
                 <!-- TODO Remove hardcoded value and create a method to calculate the -->
                 <span class="rating">4.7 </span>
@@ -47,6 +50,10 @@
                   >{{ cabinetProfile?.reviews?.length }} Recenzii</span
                 >
               </div>
+
+              <ng-template #noReviews>
+                <div class="no-reviews-message">Nu exista recenzii inca</div>
+              </ng-template>
 
               <div class="capsule-row">
                 <div class="capsule-btn">
