@@ -71,11 +71,23 @@
 
         <div class="content-card">
           <div class="staff-member">
-            <img
-              [src]="cabinetProfile?.staff[0].avatarUrl"
-              alt="staff profile image"
-              class="staff-avatar"
-            />
+            <ng-container
+              *ngIf="cabinetProfile?.staff[0]?.avatarUrl; else noAvatar"
+            >
+              <img
+                [src]="cabinetProfile?.staff[0]?.avatarUrl"
+                alt="staff profile image"
+                class="staff-avatar"
+              />
+            </ng-container>
+            <ng-template #noAvatar>
+              <div class="rounded-circle">
+                <p class="initials">
+                  {{ cabinetProfile?.staff[0]?.firstName?.charAt(0) }}
+                  {{ cabinetProfile?.staff[0]?.lastName?.charAt(0) }}
+                </p>
+              </div>
+            </ng-template>
             <p class="staff-name">
               Dr
               {{ cabinetProfile?.staff[0].firstName }}

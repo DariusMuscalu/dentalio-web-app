@@ -118,6 +118,25 @@
   margin: 1.4rem 0;
 }
 
+.rounded-circle {
+  margin-top: -4rem;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(153, 153, 153, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.rounded-circle .initials {
+  text-align: center;
+  line-height: 1;
+}
+
 // === SERVICE CARD ===
 
 .services-grid {
