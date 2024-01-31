@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavigationService } from './navigation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -10,14 +9,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class NavigationComponent {
   isNavMenuDisplayed: boolean = false;
 
-  constructor(
-    private navigationService: NavigationService,
-    private authService: AuthService
-  ) {}
-
-  toggleNavMenuVisibility() {
-    this.navigationService.toggleNavMenuVisibility();
-  }
+  constructor(private authService: AuthService) {}
 
   signOut() {
     this.authService.SignOut();

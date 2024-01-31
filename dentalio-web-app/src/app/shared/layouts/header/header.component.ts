@@ -1,25 +1,19 @@
-import { Component } from '@angular/core';
-import { NavigationService } from 'src/app/shared/layouts/navigation/navigation.service';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { MatMenu } from '@angular/material/menu';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  isAuthMenuVisible$ = this.authService.isVisible$;
-  isNavMenuVisible$ = this.navigationService.isVisible$;
+  @ViewChild(MatMenu) menu!: MatMenu; // Declare menu property using ViewChild
 
-  constructor(
-    private authService: AuthService,
-    private navigationService: NavigationService
-  ) {}
+  isAuthMenuVisible$ = this.authService.isVisible$;
+
+  constructor(private authService: AuthService) {}
 
   toggleAuthModalVisibility() {
     this.authService.toggleAuthModalVisibility();
-  }
-
-  toggleNavMenuVisibility() {
-    this.navigationService.toggleNavMenuVisibility();
   }
 }

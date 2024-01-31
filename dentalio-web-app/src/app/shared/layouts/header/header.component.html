@@ -8,10 +8,7 @@
     <div class="appointments-btn">
       <button routerLink="/appointments">Programari</button>
     </div>
-    <div class="account-btn">
-      <img src="/assets/user.svg" alt="user icon" />
-      <button (click)="toggleNavMenuVisibility()">Contul meu</button>
-    </div>
+    <app-navigation></app-navigation>
   </div>
 </header>
 
@@ -19,8 +16,4 @@
   <div class="auth-overlay-shadow">
     <app-auth-options></app-auth-options>
   </div>
-</div>
-
-<div *ngIf="isNavMenuVisible$ | async">
-  <app-navigation></app-navigation>
 </div>

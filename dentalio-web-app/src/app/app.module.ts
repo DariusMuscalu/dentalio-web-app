@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProfileEffects } from './profile/state/profile.effects';
 import { profileReducer } from './profile/state/profile.reducer';
 import { NgToastModule } from 'ng-angular-popup';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -50,6 +51,7 @@ import { NgToastModule } from 'ng-angular-popup';
       FavoritesEffects,
       ProfileEffects,
     ]),
+    BrowserAnimationsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

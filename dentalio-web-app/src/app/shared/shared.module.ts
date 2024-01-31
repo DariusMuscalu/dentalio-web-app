@@ -6,6 +6,11 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { NavigationComponent } from './layouts/navigation/navigation.component';
 import { AuthModule } from '../auth/auth.module';
 import { RouterModule } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     FavoriteButtonComponent,
@@ -13,7 +18,15 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     NavigationComponent,
   ],
-  imports: [CommonModule, AuthModule, RouterModule],
+  imports: [
+    CommonModule,
+    AuthModule,
+    RouterModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+  ],
   exports: [
     FavoriteButtonComponent,
     HeaderComponent,
