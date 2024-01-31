@@ -180,15 +180,26 @@
           </div>
         </div>
 
-        <!-- TODO I THINK THIS WILL BE ADDED AFTER MPV, CURRENTLY IN THE MOBILE APP THIS IS NOT ADDED, SO I FIRST TO ADD IT THERE TOO. -->
-        <!-- <div class="content-card">
+        <div class="content-card">
+          <div class="address">
+            <p>
+              {{ cabinetProfile?.address.county }},
+              {{ cabinetProfile?.address.city }},
+              {{ cabinetProfile?.address.address }}
+            </p>
+          </div>
+
+          <div class="description">
+            <p>{{ cabinetProfile?.description }}</p>
+          </div>
+
           <div
             class="schedule"
             *ngFor="let scheduleDay of cabinetProfile?.schedule"
           >
-            <p>{{ schedule }}</p>
+            <p>{{ scheduleDay.startTime }}</p>
           </div>
-        </div> -->
+        </div>
       </ng-container>
     </ng-container>
     <star-rating [starType]="'svg'" [rating]="2"></star-rating>
